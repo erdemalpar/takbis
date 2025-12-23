@@ -136,38 +136,66 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // 2. Sekmeler (Tabs)
+        // 5. Mahalle Sorgu Mantığı (TF0180)
+        const btnMahalleCalistir = container.querySelector('#btn-mahalle-calistir');
+        if (btnMahalleCalistir) {
+            btnMahalleCalistir.addEventListener('click', () => {
+                const listTab = container.querySelector('.tab[data-tab="liste"]');
+                const kriterPane = container.querySelector('#pane-kriter');
+                const listePane = container.querySelector('#pane-liste');
+
+                if (listTab) {
+                    container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    listTab.classList.add('active');
+                }
+                if (kriterPane) kriterPane.classList.add('hidden');
+                if (listePane) listePane.classList.remove('hidden');
+
+                const tbody = container.querySelector('#mahalle-table-body');
+                const statusCount = container.querySelector('#status-count');
+
+                if (tbody) {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">Veriler sorgulanıyor...</td></tr>';
+
+                    setTimeout(() => {
+                        if (typeof mahalleVeritabani !== 'undefined' && mahalleVeritabani.mahalleler) {
+                            const veriler = mahalleVeritabani.mahalleler;
+                            let html = '';
+
+                            veriler.forEach(v => {
+                                html += `<tr>
+                                    <td>${v.id}</td>
+                                    <td>${v.adi}</td>
+                                    <td>${v.kurum_ref === 1803 ? 'YENİMAHALLE' : v.kurum_ref}</td>
+                                    <td><span style="color: ${v.aktif ? 'green' : 'red'}; font-weight: bold;">${v.aktif ? 'AKTİF' : 'PASİF'}</span></td>
+                                </tr>`;
+                            });
+
+                            tbody.innerHTML = html;
+                            if (statusCount) statusCount.innerText = 'Kayıt : ' + veriler.length;
+                        } else {
+                            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px; color: red;">Veritabanı hatası! mahalleVeritabani bulunamadı.</td></tr>';
+                        }
+                    }, 500);
+                }
+            });
+        }
+
+        // Modül içi genel Tab geçişi (Mahalle Sorgu vb. için)
         container.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const target = tab.getAttribute('data-tab');
-                container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+                const paneId = 'pane-' + target;
+                const targetPane = container.querySelector('#' + paneId);
 
-                // İçerik filtreleme
-                const accordion = container.querySelector('.tf-accordion');
-                const listTable = container.querySelector('.complex-table');
-
-                if (target === 'kisi-listesi') {
-                    if (accordion) accordion.classList.add('hidden');
-                    // Liste tablosu yoksa 'Sorgulama Yok' mesajı ekle
-                    if (!listTable) {
-                        const tableHtml = '<table class="complex-table"><thead><tr><th>Sistem No</th><th>Adı</th><th>Soyadı</th></tr></thead><tbody><tr><td colspan="3" style="text-align:center;">Veri bulunamadı.</td></tr></tbody></table>';
-                        container.querySelector('.panel-content-classic').insertAdjacentHTML('beforeend', tableHtml);
-                    } else listTable.classList.remove('hidden');
-                } else {
-                    if (accordion) accordion.classList.remove('hidden');
-                    if (listTable) listTable.classList.add('hidden');
+                if (targetPane) {
+                    container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    container.querySelectorAll('.module-pane').forEach(p => p.classList.add('hidden'));
+                    targetPane.classList.remove('hidden');
                 }
             });
         });
-
-        // 4. Mütekabiliyet Yardım Butonu
-        const helpBtn = container.querySelector('#btn-help-mutekabiliyet');
-        if (helpBtn) {
-            helpBtn.addEventListener('click', () => {
-                alert("MÜTEKABİLİYET (KARŞILIKLILIK) NEDİR?\n\nMütekabiliyet, devletlerarası ilişkilerde maruz kalınan davranışa aynı şekilde karşılık verme prensibidir.\n\nTapu ve Kadastro mevzuatında ise; bir yabancı ülke vatandaşının Türkiye'de taşınmaz edinebilmesi için, kendi ülkesinin de Türk vatandaşlarına aynı hakları tanıması şartını ifade eder.");
-            });
-        }
     }
 
     // === ANA MENÜ POPUP YÖNETİMİ ===

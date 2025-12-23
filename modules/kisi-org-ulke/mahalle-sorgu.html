@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Mahalle modülüne özel ekstra ince ayarlar */
+        .mahalle-form-container {
+            background: #f8faff;
+            border: 1px solid #abc;
+            padding: 15px;
+            margin: 10px;
+        }
+
+        .mahalle-form-title {
+            text-align: center;
+            color: #000080;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 20px;
+            background: #e1efff;
+            padding: 5px;
+            border: 1px solid #abc;
+        }
+
+        .mahalle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .mahalle-field {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mahalle-field label {
+            width: 120px;
+            font-size: 11px;
+            color: #000080;
+            font-weight: 500;
+        }
+
+        .mahalle-input-group {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mahalle-input {
+            flex: 1;
+            border: 1px solid #7f9db9;
+            padding: 2px 5px;
+            font-size: 12px;
+            color: #000080;
+            font-weight: bold;
+        }
+
+        /* Özel İkonlar */
+        .mahalle-icon-btn {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .mahalle-icon-btn .row {
+            display: flex;
+            gap: 1px;
+        }
+
+        .mahalle-icon-btn .box {
+            width: 8px;
+            height: 8px;
+            border: 1px solid #000;
+        }
+
+        .mahalle-icon-btn .box.cyan {
+            background: #0ff;
+        }
+
+        .mahalle-icon-btn .box.red {
+            background: #f00;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body class="module-body">
+    <!-- TOOLBAR -->
+    <div class="panel-toolbar-classic">
+        <div class="t-group">
+            <button class="t-icon-btn" title="İlk Kayıt"><i class="fa-solid fa-step-backward"
+                    style="color: #1565c0;"></i></button>
+            <button class="t-icon-btn" title="Önceki"><i class="fa-solid fa-caret-left"
+                    style="color: #1565c0;"></i></button>
+            <button class="t-icon-btn" title="Sonraki"><i class="fa-solid fa-caret-right"
+                    style="color: #1565c0;"></i></button>
+            <button class="t-icon-btn" title="Son Kayıt"><i class="fa-solid fa-step-forward"
+                    style="color: #1565c0;"></i></button>
+        </div>
+        <div class="t-sep"></div>
+        <div class="t-group">
+            <button class="t-icon-btn" id="btn-mahalle-calistir" title="Yürüt (Sorgula)"><i class="fa-solid fa-bolt"
+                    style="color: #fbc02d;"></i></button>
+            <button class="t-icon-btn" title="Temizle"><i class="fa-solid fa-brush"
+                    style="color: #546e7a;"></i></button>
+            <button class="t-icon-btn" title="Kaydet"><i class="fa-solid fa-floppy-disk"
+                    style="color: #2e7d32;"></i></button>
+            <button class="t-icon-btn" title="Yeni Kayıt"><i class="fa-solid fa-file-circle-plus"
+                    style="color: #1565c0;"></i></button>
+            <button class="t-icon-btn" title="Sil"><i class="fa-solid fa-trash-can"
+                    style="color: #c62828;"></i></button>
+        </div>
+        <div class="t-sep"></div>
+        <div class="t-group">
+            <button class="t-icon-btn" title="Yazdır"><i class="fa-solid fa-print" style="color: #455a64;"></i></button>
+            <button class="t-icon-btn" title="Yardım"><i class="fa-solid fa-circle-question"
+                    style="color: #fbc02d;"></i></button>
+        </div>
+        <div class="toolbar-right">
+            <button class="t-icon-btn pencere-kapat-btn" title="Kapat"><i class="fa-solid fa-door-open"
+                    style="color: #c62828;"></i></button>
+        </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="panel-tabs-classic">
+        <div class="tab active" data-tab="kriter">Mahalle - Köy Arama Kriterleri</div>
+        <div class="tab" data-tab="liste">Mahalle - Köy Arama Sonuçları Listesi</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="panel-content-classic">
+        <!-- 1. SEKME: KRİTERLER -->
+        <div id="pane-kriter" class="module-pane">
+            <div class="mahalle-form-container">
+                <div class="mahalle-form-title">Mahalle - Köy Sorgulama</div>
+
+                <div class="mahalle-grid">
+                    <!-- Kurum -->
+                    <div class="mahalle-field">
+                        <label>Kurum</label>
+                        <div class="mahalle-input-group">
+                            <input type="text" class="mahalle-input" value="1803">
+                            <div class="mahalle-icon-btn" title="Seç">
+                                <div class="row">
+                                    <div class="box cyan"></div>
+                                    <div class="box cyan"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="box cyan"></div>
+                                    <div class="box red"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mahalle-Köy Adı -->
+                    <div class="mahalle-field">
+                        <label>Mahalle - Köy Adı</label>
+                        <div class="mahalle-input-group">
+                            <input type="text" class="mahalle-input">
+                        </div>
+                    </div>
+
+                    <!-- Mahalle-Köy -->
+                    <div class="mahalle-field">
+                        <label>Mahalle - Köy</label>
+                        <div class="mahalle-input-group">
+                            <input type="text" class="mahalle-input">
+                            <div class="mahalle-icon-btn" title="Seç">
+                                <div class="row">
+                                    <div class="box cyan"></div>
+                                    <div class="box cyan"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="box cyan"></div>
+                                    <div class="box red"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mahalle-Köy Grup -->
+                    <div class="mahalle-field">
+                        <label>Mahalle - Köy Grup</label>
+                        <div class="mahalle-input-group">
+                            <input type="text" class="mahalle-input">
+                            <div class="mahalle-icon-btn" title="Seç">
+                                <div class="row">
+                                    <div class="box cyan"></div>
+                                    <div class="box cyan"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="box cyan"></div>
+                                    <div class="box red"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. SEKME: LİSTE (BAŞLANGIÇTA GİZLİ) -->
+        <div id="pane-liste" class="module-pane hidden">
+            <table class="complex-table">
+                <thead>
+                    <tr>
+                        <th style="width: 100px;">Mahalle No</th>
+                        <th>Mahalle - Köy Adı</th>
+                        <th style="width: 150px;">Grup Adı</th>
+                        <th style="width: 100px;">Durum</th>
+                    </tr>
+                </thead>
+                <tbody id="mahalle-table-body">
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 20px; color: #666;">
+                            Kriterleri girip Sorgula (Şimşek) butonuna basınız.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- STATUS BAR -->
+    <div class="tf-panel-status">
+        <div class="tf-status-item date" id="status-date">24/12/2025</div>
+        <div class="tf-status-item" id="status-count">Kayıt : 0</div>
+        <div class="tf-status-item flex-1"></div>
+    </div>
+
+    <script>
+        // Modül içi özel JavaScript (Gerçek veri entegrasyonu)
+        (function () {
+            const tabs = document.querySelectorAll('.tab');
+            const panes = document.querySelectorAll('.module-pane');
+            const calistirBtn = document.getElementById('btn-mahalle-calistir');
+
+            // Input Alanları
+            const inpKurum = document.querySelector('input[value="1803"]'); // Örnek olarak kurum inputu
+            const inpMahalleAdi = document.querySelectorAll('.mahalle-input')[1]; // Mahalle - Köy Adı inputu
+
+            // Sekme Değiştirme
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-tab');
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    panes.forEach(p => p.classList.add('hidden'));
+                    document.getElementById('pane-' + target).classList.remove('hidden');
+                });
+            });
+
+            // "Çalıştır" (Sorgula) Gerçek Veri Entegrasyonu
+            if (calistirBtn) {
+                calistirBtn.addEventListener('click', () => {
+                    // Liste sekmesine geç
+                    const listTab = document.querySelector('.tab[data-tab="liste"]');
+                    if (listTab) listTab.click();
+
+                    const tbody = document.getElementById('mahalle-table-body');
+                    const statusCount = document.getElementById('status-count');
+
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">Veriler sorgulanıyor...</td></tr>';
+
+                    setTimeout(() => {
+                        // Global mahalleVeritabani değişkeninden verileri çek (database/mahalle.js içinde tanımlı)
+                        let veriler = [];
+
+                        if (typeof mahalleVeritabani !== 'undefined' && mahalleVeritabani.mahalleler) {
+                            veriler = mahalleVeritabani.mahalleler;
+
+                            // Basit bir filtreleme: Mahalle adına göre
+                            const aramaMetni = inpMahalleAdi.value.trim().toUpperCase();
+                            if (aramaMetni) {
+                                veriler = veriler.filter(m => m.adi.toUpperCase().includes(aramaMetni));
+                            }
+                        } else {
+                            console.error("mahalleVeritabani bulunamadı!");
+                            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px; color: red;">Veritabanı bağlantı hatası!</td></tr>';
+                            return;
+                        }
+
+                        if (veriler.length === 0) {
+                            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">Aranan kriterlere uygun mahalle bulunamadı.</td></tr>';
+                            statusCount.innerText = 'Kayıt : 0';
+                            return;
+                        }
+
+                        let html = '';
+                        veriler.forEach(v => {
+                            html += `<tr>
+                                <td>${v.id}</td>
+                                <td>${v.adi}</td>
+                                <td>${v.kurum_ref === 1803 ? 'YENİMAHALLE' : v.kurum_ref}</td>
+                                <td><span style="color: ${v.aktif ? 'green' : 'red'}; font-weight: bold;">${v.aktif ? 'AKTİF' : 'PASİF'}</span></td>
+                            </tr>`;
+                        });
+
+                        tbody.innerHTML = html;
+                        statusCount.innerText = 'Kayıt : ' + veriler.length;
+                    }, 400);
+                });
+            }
+
+            // Tarih Güncelleme
+            const dateEl = document.getElementById('status-date');
+            if (dateEl) {
+                dateEl.innerText = new Date().toLocaleDateString('tr-TR');
+            }
+        })();
+    </script>
+</body>
+
+</html>
