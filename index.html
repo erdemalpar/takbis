@@ -128,6 +128,21 @@
         <!-- Yüzen Pencereler İçin Masaüstü Alanı -->
         <div id="pencere-alani" style="position:relative; width:100%; height:100%;">
 
+            <!-- Mahalle Sorgu Penceresi (TF0180) -->
+            <div id="pencere-mahalle-sorgu" class="pencere hidden">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">TF0180 - Mahalle - Köy Sorgulama</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-regular fa-window-minimize"></i>
+                        <i class="fa-regular fa-window-maximize"></i>
+                        <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
+                    </div>
+                </div>
+                <div class="pencere-icerik">
+                    <!-- İçerik asenkron yüklenecek -->
+                </div>
+            </div>
+
             <!-- Kişi Sorgulama Penceresi (TF0124) -->
             <div id="pencere-kisi-sorgu" class="pencere hidden">
                 <div class="pencere-baslik">
@@ -162,6 +177,51 @@
             <div id="pencere-yabanci-kimlik" class="pencere hidden">
                 <div class="pencere-baslik">
                     <span class="baslik-metni">TF0881 - Yabancı Kişi Sorgu ve Kayıt İşlemleri</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-regular fa-window-minimize"></i>
+                        <i class="fa-regular fa-window-maximize"></i>
+                        <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
+                    </div>
+                </div>
+                <div class="pencere-icerik">
+                    <!-- İçerik asenkron yüklenecek -->
+                </div>
+            </div>
+
+            <!-- Organizasyon Tanımları Penceresi (TF0019) -->
+            <div id="pencere-organizasyon" class="pencere hidden">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">TF0019 - Organizasyon</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-regular fa-window-minimize"></i>
+                        <i class="fa-regular fa-window-maximize"></i>
+                        <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
+                    </div>
+                </div>
+                <div class="pencere-icerik">
+                    <!-- İçerik asenkron yüklenecek -->
+                </div>
+            </div>
+
+            <!-- Ülke Tanımları Penceresi (TF0020) -->
+            <div id="pencere-ulke" class="pencere hidden">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">TF0020 - Ülke</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-regular fa-window-minimize"></i>
+                        <i class="fa-regular fa-window-maximize"></i>
+                        <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
+                    </div>
+                </div>
+                <div class="pencere-icerik">
+                    <!-- İçerik asenkron yüklenecek -->
+                </div>
+            </div>
+
+            <!-- Mütekabiliyet Bilgisi Penceresi (TF0419) -->
+            <div id="pencere-mutekabiliyet" class="pencere hidden">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">TF0419 - Ülkemizde Taşınmaz Ve Sınırlı Ayni Hak Edinimi Bilgisi</span>
                     <div class="pencere-kontrolleri">
                         <i class="fa-regular fa-window-minimize"></i>
                         <i class="fa-regular fa-window-maximize"></i>
@@ -241,10 +301,14 @@
                                         Kimlik Bilgileri Güncelle</div>
                                 </div>
                             </div>
-                            <div class="menu-popup-item">1.4. Organizasyon Tanımları</div>
-                            <div class="menu-popup-item">1.5. Ülke Tanımları</div>
+                            <div class="menu-popup-item" data-open-window="pencere-organizasyon"
+                                data-module-url="modules/kisi-org-ulke/organizasyon-tanimlari.html">1.4. Organizasyon
+                                Tanımları</div>
+                            <div class="menu-popup-item" data-open-window="pencere-ulke"
+                                data-module-url="modules/kisi-org-ulke/ulke-tanimlari.html">1.5. Ülke Tanımları</div>
                             <div class="menu-popup-item">1.6. Organizasyon Ülke Tanımları</div>
-                            <div class="menu-popup-item">1.7. Mahalle Sorgu</div>
+                            <div class="menu-popup-item" data-open-window="pencere-mahalle-sorgu"
+                                data-module-url="modules/kisi-org-ulke/mahalle-sorgu.html">1.7. Mahalle Sorgu</div>
                         </div>
                     </div>
                     <div class="menu-ikonu-buton" id="menu-basvuru-root">
@@ -588,6 +652,7 @@
     <script src="database/kisi.js"></script>
     <script src="database/tuzelkisi.js"></script>
     <script src="database/ulke.js"></script>
+    <script src="database/mahalle.js"></script>
     <script src="app.js"></script>
 </body>
 

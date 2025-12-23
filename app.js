@@ -77,49 +77,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // === DİNAMİK MODÜL YÜKLEME VE PENCERE AÇMA ===
-    document.querySelectorAll('[data-open-window]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const winId = btn.getAttribute('data-open-window');
-            const moduleUrl = btn.getAttribute('data-module-url');
-            const targetWin = document.getElementById(winId);
+    // === DİNAMİK MODÜL YÜKLEME VE PENCERE AÇMA (OLAY DELEGASYONU) ===
+    document.addEventListener('click', async (e) => {
+        const btn = e.target.closest('[data-open-window]');
+        if (!btn) return;
 
-            if (targetWin) {
-                // Eğer modül URL'si varsa içeriği çek ve yükle
-                if (moduleUrl) {
-                    const contentArea = targetWin.querySelector('.pencere-icerik');
-                    contentArea.innerHTML = '<div style="padding:20px; text-align:center; color:#000080;">Modül yükleniyor...</div>';
+        const winId = btn.getAttribute('data-open-window');
+        const moduleUrl = btn.getAttribute('data-module-url');
+        const targetWin = document.getElementById(winId);
 
-                    fetch(moduleUrl)
-                        .then(res => res.text())
-                        .then(html => {
-                            const parser = new DOMParser();
-                            const doc = parser.parseFromString(html, 'text/html');
-                            const moduleBody = doc.querySelector('body');
-                            contentArea.innerHTML = moduleBody ? moduleBody.innerHTML : html;
+        if (targetWin) {
+            // Eğer modül URL'si varsa içeriği çek ve yükle
+            if (moduleUrl) {
+                const contentArea = targetWin.querySelector('.pencere-icerik');
+                contentArea.innerHTML = '<div style="padding:20px; text-align:center; color:#000080;">Modül yükleniyor...</div>';
 
-                            // Yüklenen içerikteki olayları (Accordion/Tabs) bağla
-                            baglaModulIciOlaylar(contentArea);
-                        })
-                        .catch(err => {
-                            contentArea.innerHTML = `<div style="padding:20px; color:red;">Modül yükleme hatası: ${err}</div>`;
-                        });
+                try {
+                    const res = await fetch(`${moduleUrl}?t=${Date.now()}`);
+                    const html = await res.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const moduleBody = doc.querySelector('body');
+                    contentArea.innerHTML = moduleBody ? moduleBody.innerHTML : html;
+
+                    // Yüklenen içerikteki olayları (Accordion/Tabs vb.) bağla
+                    baglaModulIciOlaylar(contentArea);
+                } catch (err) {
+                    contentArea.innerHTML = `<div style="padding:20px; color:red;">Modül yükleme hatası: ${err}</div>`;
                 }
-
-                targetWin.classList.remove('hidden');
-                targetWin.style.display = 'block';
-                targetWin.style.zIndex = ++currentZIndex;
-
-                // Pencereyi hafif kaydırarak aç (cascade etkisi)
-                targetWin.style.top = (60 + (currentZIndex % 20 * 10)) + 'px';
-                targetWin.style.left = (60 + (currentZIndex % 20 * 10)) + 'px';
             }
 
-            // Menüyü kapat
-            const rootBtn = btn.closest('.menu-ikonu-buton');
-            if (rootBtn) rootBtn.classList.remove('aktif');
-            e.stopPropagation();
-        });
+            targetWin.classList.remove('hidden');
+            targetWin.style.display = 'block';
+            targetWin.style.zIndex = ++currentZIndex;
+
+            // Pencereyi hafif kaydırarak aç (cascade etkisi)
+            targetWin.style.top = (60 + (currentZIndex % 20 * 10)) + 'px';
+            targetWin.style.left = (60 + (currentZIndex % 20 * 10)) + 'px';
+        }
+
+        // Menüyü kapat
+        const rootBtn = btn.closest('.menu-ikonu-buton');
+        if (rootBtn) rootBtn.classList.remove('aktif');
+        e.stopPropagation();
     });
 
     // Modül içindeki özel kontrolleri (TAKBİS Form Logic) bağlayan fonksiyon
@@ -161,13 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // 3. Modül içi kapatma butonları (Toolbar'daki gibi)
-        container.querySelectorAll('.pencere-kapat-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const win = btn.closest('.pencere');
-                if (win) win.classList.add('hidden');
+        // 4. Mütekabiliyet Yardım Butonu
+        const helpBtn = container.querySelector('#btn-help-mutekabiliyet');
+        if (helpBtn) {
+            helpBtn.addEventListener('click', () => {
+                alert("MÜTEKABİLİYET (KARŞILIKLILIK) NEDİR?\n\nMütekabiliyet, devletlerarası ilişkilerde maruz kalınan davranışa aynı şekilde karşılık verme prensibidir.\n\nTapu ve Kadastro mevzuatında ise; bir yabancı ülke vatandaşının Türkiye'de taşınmaz edinebilmesi için, kendi ülkesinin de Türk vatandaşlarına aynı hakları tanıması şartını ifade eder.");
             });
-        });
+        }
     }
 
     // === ANA MENÜ POPUP YÖNETİMİ ===
