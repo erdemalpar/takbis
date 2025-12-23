@@ -173,16 +173,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // === ANA MENÜ POPUP YÖNETİMİ ===
     document.querySelectorAll('.menu-ikonu-buton').forEach(btn => {
         btn.addEventListener('click', (e) => {
+            // Eğer bir popup öğesine veya alt menüye tıklandıysa ana menüyü kapatma
             if (e.target.closest('.menu-popup')) return;
+
             const isAlreadyActive = btn.classList.contains('aktif');
+            // Diğer tüm ana menüleri kapat
             document.querySelectorAll('.menu-ikonu-buton').forEach(b => b.classList.remove('aktif'));
+
             if (!isAlreadyActive) btn.classList.add('aktif');
             e.stopPropagation();
         });
     });
 
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.menu-ikonu-buton').forEach(b => b.classList.remove('aktif'));
+    // Alt Menü (Submenu) Yönetimi
+    document.addEventListener('click', (e) => {
+        const item = e.target.closest('.menu-popup-item');
+        if (item) {
+            const submenu = item.querySelector('.submenu');
+            if (submenu) {
+                // Eğer tıklanan madde bir alt menü içeriyorsa onu aç/kapat
+                item.classList.toggle('submenu-open');
+                e.stopPropagation();
+                return;
+            }
+        }
+
+        // Boş bir yere tıklandığında veya modül tıklandığında menüleri kapat
+        if (!e.target.closest('.menu-ikonu-buton')) {
+            document.querySelectorAll('.menu-ikonu-buton').forEach(b => b.classList.remove('aktif'));
+            document.querySelectorAll('.menu-popup-item').forEach(i => i.classList.remove('submenu-open'));
+        }
     });
 
     // === SİSTEM GEÇİŞLERİ (LOGIN / LOGOUT / DESKTOP) ===

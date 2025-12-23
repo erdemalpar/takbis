@@ -582,7 +582,17 @@ html {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    /* Alt menü için gerekli */
+    gap: 10px;
+}
+
+.menu-popup-item span {
+    flex: 1;
+    text-align: left;
+}
+
+.menu-popup-item i.fa-caret-right {
+    font-size: 12px;
+    color: #888;
 }
 
 .menu-popup-item:hover {
