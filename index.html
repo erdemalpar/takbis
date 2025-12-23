@@ -15,461 +15,547 @@
 
     <!-- Login Screen -->
     <div id="login-view" class="view active">
-        <div class="login-bg-layer"></div>
+        <div class="login-overlay-full">
 
-        <div class="login-top-logo">
-            <div class="tk-logo-circle">
-                <span class="tk-chars">tK</span>
-            </div>
-            <div class="tk-text">
-                <h1>Tapu ve Kadastro</h1>
-                <p>Genel Müdürlüğü</p>
-            </div>
-        </div>
+            <!-- Sağ Üst Kapatma İkonu -->
+            <div class="login-close-x"><i class="fa-solid fa-xmark"></i></div>
 
-        <div class="login-box">
-            <h2 class="form-title">TAKBİS SİSTEMİNE GİRİŞ</h2>
-
-            <form id="login-form">
-                <div class="form-row">
-                    <label>Kurum</label>
-                    <div class="input-wrapper">
-                        <select id="kurum">
-                            <option>Yenimahalle TM (ANKARA)</option>
-                        </select>
+            <!-- Sol Üst: Tapu ve Kadastro Logosu -->
+            <div class="login-tk-side-logo">
+                <div class="tk-logo-img-wrapper">
+                    <div class="tk-circle-inner">
+                        <span class="tk-letter">t</span>
+                        <span class="tk-letter-alt">k</span>
                     </div>
                 </div>
-                <div class="form-row">
-                    <label>Yetki Grubu</label>
-                    <div class="input-wrapper">
-                        <input type="text" value="Yardım Masası Kullanıcı Destek Grubu" readonly class="readonly-input">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <label>Adı Soyadı</label>
-                    <div class="input-wrapper">
-                        <input type="text" value="Erdem ALPAR">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <label>Kullanıcı Kodu</label>
-                    <div class="input-wrapper">
-                        <input type="text" value="tk41671">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <label>Parola</label>
-                    <div class="input-wrapper">
-                        <input type="password" value="password123">
-                    </div>
-                </div>
-
-                <div class="form-footer">
-                    <button type="submit" class="btn-login">Giriş</button>
-                    <div class="login-links">
-                        <a href="#">Parola İşlemleri</a>
-                        <a href="#">Network Testi</a>
-                        <a href="#">Devralınmış Yetkiler</a>
-                    </div>
-                </div>
-            </form>
-
-            <div class="bt-logo-container">
-                <div class="bt-icon">
-                    <span class="b-char">b</span>
-                    <span class="t-char">t</span>
-                </div>
-                <div class="bt-text">
-                    <strong>Bilgi</strong>
-                    <span>Teknolojileri</span>
+                <div class="tk-logo-text-vertical">
+                    <strong>Tapu ve Kadastro</strong>
+                    <span>Genel Müdürlüğü</span>
                 </div>
             </div>
-        </div>
 
-        <div class="copyright-bar">
-            Tapu ve Kadastro Genel Müdürlüğü. Her hakkı saklıdır. © 2020. Dikmen Yolu No: 14 06100 Bakanlıklar Ankara
+            <!-- Sağ Panel: Giriş Formu -->
+            <div class="login-right-panel">
+                <h2 class="login-main-title">TAKBİS SİSTEMİNE GİRİŞ</h2>
+
+                <form id="login-form">
+                    <div class="login-form-row">
+                        <label>Kurum</label>
+                        <div class="login-input-box">
+                            <select id="kurum">
+                                <option>TAPU VE KADASTRO GENEL MÜDÜRLÜĞÜ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="login-form-row">
+                        <label>Yetki Grubu</label>
+                        <div class="login-input-box">
+                            <input type="text" value="Yardım Masası Kullanıcı Destek Grubu" readonly>
+                        </div>
+                    </div>
+                    <div class="login-form-row">
+                        <label>Adı Soyadı</label>
+                        <div class="login-input-box">
+                            <input type="text" value="Erdem ALPAR">
+                        </div>
+                    </div>
+                    <div class="login-form-row">
+                        <label>Kullanıcı Kodu</label>
+                        <div class="login-input-box">
+                            <input type="text" value="tk41671">
+                        </div>
+                    </div>
+                    <div class="login-form-row">
+                        <label>Parola</label>
+                        <div class="login-input-box">
+                            <input type="password" value="password123">
+                        </div>
+                    </div>
+
+                    <div class="login-action-area">
+                        <button type="submit" class="btn-win-classic">Giriş</button>
+                        <div class="login-link-group">
+                            <a href="#">Parola İşlemleri</a>
+                            <a href="#">Network Testi</a>
+                            <a href="#">Devralınmış Yetkiler</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Sağ Alt: BT Logosu -->
+                <div class="login-bt-bottom-logo">
+                    <div class="bt-icon-new">
+                        <span class="b-char">b</span>
+                        <span class="t-char">t</span>
+                    </div>
+                    <div class="bt-text-new">
+                        <strong>Bilgi</strong>
+                        <span>Teknolojileri</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-bottom-copyright">
+                Tapu ve Kadastro Genel Müdürlüğü. Her hakkı saklıdır. © 2020. Dikmen Yolu No: 14 06100 Bakanlıklar
+                Ankara
+            </div>
         </div>
     </div>
 
-    <!-- Dashboard Screen -->
-    <div id="dashboard-view" class="view hidden">
-        <header class="dashboard-header">
-            <div class="header-bg"></div>
-            <div class="header-main-content">
-                <div class="header-title">TAKBİS - TM FONKSİYONLARI</div>
-                <div class="header-right-logo">
-                    <div class="tk-logo-circle-sm" id="tk-logo-btn" style="cursor: pointer;" title="Veritabanı Şeması">
-                        <span class="tk-chars-sm">tK</span>
-                    </div>
-                    <div class="tk-text-sm">
-                        <span>Tapu ve Kadastro</span>
-                        <small>Genel Müdürlüğü</small>
-                    </div>
-                </div>
-            </div>
-        </header>
+    <!-- Masaüstü Ortamı (Yeni EXE Görünümü) -->
+    <div id="ana-masaustu" class="view hidden">
 
-        <!-- Toolbar / Menu Bar -->
-        <nav class="toolbar">
-            <div class="menu-item active" id="menu-kisi">
-                <div class="menu-label">
-                    <i class="fa-solid fa-users"></i> <span>Kişi/Org./Ülke</span>
-                </div>
-                <!-- Dropdown Menu -->
-                <div class="dropdown-menu">
-                    <div class="dropdown-item">Kişi Bilgileri <i class="fa-solid fa-caret-right ml-auto"></i></div>
-                    <div class="dropdown-item">Tüzel Kişi Bilgileri <i class="fa-solid fa-caret-right ml-auto"></i>
-                    </div>
-                    <div class="dropdown-item">Yabancı Kimlik <i class="fa-solid fa-caret-right ml-auto"></i></div>
-                    <div class="dropdown-separator"></div>
-                    <div class="dropdown-item">Organizasyon Tanımları</div>
-                    <div class="dropdown-item">Ülke Tanımları</div>
-                    <div class="dropdown-item">Organizasyon Ülke Tanımları</div>
-                    <div class="dropdown-separator"></div>
-                    <div class="dropdown-item">Mahalle Sorgu</div>
-                </div>
-            </div>
-            <div class="menu-item" id="menu-basvuru">
-                <div class="menu-label"><i class="fa-solid fa-plus-circle"></i> <span>Başvuru</span></div>
-                <!-- Basvuru Dropdown -->
-                <div class="dropdown-menu">
-                    <div class="dropdown-item">Başvuru Belgeleri <span class="ml-auto">Ctrl+B</span></div>
-                    <div class="dropdown-item">İş Yükü Monitörü</div>
-                    <div class="dropdown-item">Personel Puantaj Listesi</div>
-                    <div class="dropdown-separator"></div>
-                    <div class="dropdown-item">Bölge Md.'den Gönderilen Haciz Uyarıları</div>
-                    <div class="dropdown-separator"></div>
-                    <div class="dropdown-item">Personel - İşlem</div>
-                    <div class="dropdown-separator"></div>
-                    <div class="dropdown-item">Yevmiye Defteri</div>
-                    <div class="dropdown-item">Temsil Azil Defteri</div>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-label"><i class="fa-solid fa-cogs"></i> <span>İşlemler</span></div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-label"><i class="fa-solid fa-search"></i> <span>Sorgulama</span></div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-label"><i class="fa-solid fa-database"></i> <span>TM Arşivi</span></div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-label"><i class="fa-solid fa-shield-alt"></i> <span>Güvenlik</span></div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-label"><i class="fa-solid fa-folder-open"></i> <span>Veri Düzeltme</span></div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-label"><i class="fa-solid fa-clipboard-list"></i> <span>Zabıt</span></div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-label"><i class="fa-solid fa-chart-pie"></i> <span>Veri Analiz</span></div>
-            </div>
-            <div class="menu-item btn-logout" id="logout-btn">
-                <div class="menu-label"><i class="fa-solid fa-times" style="color: #c0392b;"></i> <span>Çıkış</span>
-                </div>
-            </div>
-        </nav>
+        <!-- Yüzen Pencereler İçin Masaüstü Alanı -->
+        <div id="pencere-alani" style="position:relative; width:100%; height:100%;">
 
-        <main class="content-area">
-            <div class="workspace">
-                <!-- Welcome Screen (Default) -->
-                <div id="welcome-screen" class="workspace-panel active">
-                    <div class="welcome-msg">
-                        <h3>Sisteme Hoşgeldiniz</h3>
-                        <p>İşlem yapmak için yukarıdaki menüleri kullanınız.</p>
+            <!-- Örnek İşlem Penceresi: Kişi Sorgulama -->
+            <div id="pencere-kisi-sorgu" class="pencere hidden">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">- Kişi Sorgulama</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-regular fa-window-minimize"></i>
+                        <i class="fa-regular fa-window-maximize"></i>
+                        <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
                     </div>
                 </div>
-
-                <!-- Database Schema Panel -->
-                <div id="panel-db-schema" class="workspace-panel hidden">
-                    <div class="inner-window">
-                        <div class="window-header">
-                            <span>📊 TAKBIS Veritabanı Şeması</span>
-                            <div class="window-controls">
-                                <i class="fa-regular fa-window-minimize"></i>
-                                <i class="fa-regular fa-window-maximize"></i>
-                                <i class="fa-solid fa-xmark close-panel-btn"></i>
-                            </div>
-                        </div>
-
-                        <div class="db-schema-container">
-                            <!-- Sol Panel: Tablo Listesi -->
-                            <div class="db-schema-sidebar">
-                                <div class="db-info-header">
-                                    <i class="fa-solid fa-database"></i>
-                                    <span id="db-name">TAKBIS</span>
-                                </div>
-                                <div class="db-description" id="db-description">
-                                    Tapu ve Kadastro Bilgi Sistemi Veritabanı
-                                </div>
-                                <div class="db-tables-header">
-                                    <i class="fa-solid fa-table"></i>
-                                    <span>Tablolar</span>
-                                </div>
-                                <div id="db-tables-list" class="db-tables-list">
-                                    <!-- JavaScript ile doldurulacak -->
-                                </div>
-                            </div>
-
-                            <!-- Sağ Panel: Tablo Detayları -->
-                            <div class="db-schema-main">
-                                <div class="db-table-details" id="db-table-details">
-                                    <div class="no-table-selected">
-                                        <i class="fa-solid fa-table" style="font-size: 48px; color: #ccc;"></i>
-                                        <p>Sol taraftan bir tablo seçin</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Status Bar -->
-                        <div class="panel-statusbar">
-                            <span id="db-status">Veritabanı Şeması Görüntüleyici</span>
+                <div class="pencere-icerik">
+                    <div class="panel-toolbar">
+                        <button class="t-btn btn-yurut" title="Yürüt"><i class="fa-solid fa-play"
+                                style="color: #f1c40f;"></i></button>
+                        <button class="t-btn"><i class="fa-solid fa-bolt" style="color: gold;"></i></button>
+                        <div class="toolbar-right">
+                            <button class="t-btn pencere-kapat-btn"><i class="fa-solid fa-door-open"
+                                    style="color: #c0392b;"></i></button>
                         </div>
                     </div>
-                </div>
-
-                <!-- Person Inquiry Panel -->
-                <div id="panel-kisi-sorgu" class="workspace-panel hidden">
-                    <!-- Inner Window Frame Look -->
-                    <div class="inner-window">
-                        <div class="window-header">
-                            <span>- Kişi Bilgileri – Kişi Sorgulama</span>
-                            <div class="window-controls">
-                                <i class="fa-regular fa-window-minimize"></i>
-                                <i class="fa-regular fa-window-maximize"></i>
-                                <i class="fa-solid fa-xmark close-panel-btn"></i>
-                            </div>
-                        </div>
-
-                        <!-- Taskbar / Toolbar -->
-                        <div class="panel-toolbar">
-                            <div class="toolbar-group">
-                                <button class="t-btn" title="Yürüt"><i class="fa-solid fa-play"
-                                        style="color: #f1c40f;"></i></button> <!-- Execute/Search -->
-                                <button class="t-btn"><i class="fa-solid fa-backward-step"></i></button>
-                                <button class="t-btn"><i class="fa-solid fa-forward-step"></i></button>
-                                <button class="t-btn"><i class="fa-solid fa-forward-fast"></i></button>
-                            </div>
-                            <div class="toolbar-separator"></div>
-                            <div class="toolbar-group">
-                                <button class="t-btn"><i class="fa-solid fa-bolt" style="color: gold;"></i></button>
-                                <button class="t-btn"><i class="fa-solid fa-eraser"></i></button> <!-- Clear -->
-                                <button class="t-btn"><i class="fa-solid fa-print"></i></button>
-                            </div>
-                            <div class="toolbar-separator"></div>
-                            <div class="toolbar-group">
-                                <button class="t-btn"><i class="fa-solid fa-circle-exclamation"></i></button>
-                                <button class="t-btn"><i class="fa-solid fa-users-gear"></i></button>
-                                <button class="t-btn"><i class="fa-solid fa-file-invoice"></i></button>
-                            </div>
-                            <div class="toolbar-right">
-                                <button class="t-btn"><i class="fa-solid fa-question"></i></button>
-                                <button class="t-btn"><i class="fa-solid fa-door-open"
-                                        style="color: #c0392b;"></i></button>
-                            </div>
-                        </div>
-
-                        <!-- Tabs -->
-                        <div class="panel-tabs">
-                            <div class="tab active" data-tab="arama-kriterleri">Kişi Arama Kriterleri</div>
-                            <div class="tab" data-tab="kisi-listesi">Kişi Listesi</div>
-                        </div>
-
-                        <!-- Kişi Arama Kriterleri Content -->
-                        <div class="panel-content-scroll tab-content active" id="tab-arama-kriterleri">
-
-                            <!-- Accordion Item 1: Hızlı Arama -->
-                            <div class="accordion-item open">
-                                <div class="accordion-header">
-                                    <span class="acc-title">1.1.1. Hızlı Arama</span>
-                                </div>
-                                <div class="accordion-body">
-                                    <div class="form-row-simple">
-                                        <label>Kişi Sistem No</label>
-                                        <input type="text" class="std-input" id="inp-kisi-sistem-no"
-                                            style="width: 200px;">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Accordion Item 2: Tanıtım No Bilgisi ile Arama -->
-                            <div class="accordion-item open">
-                                <div class="accordion-header">
-                                    <span class="acc-title">1.1.2. Tanıtım No Bilgisi İle Arama</span>
-                                </div>
-                                <div class="accordion-body">
-                                    <div class="form-row-simple">
-                                        <label>Tanıtım No Tip</label>
-                                        <div class="input-with-btn">
-                                            <input type="text" class="std-input" id="inp-tanitim-no-tip" readonly>
-                                            <button class="icon-btn" id="btn-open-type-modal"><i
-                                                    class="fa-solid fa-binoculars"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="form-row-simple">
-                                        <label>Tanıtım No</label>
-                                        <input type="text" class="std-input" style="width: 200px;">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Accordion Item 3: Kimlik Bilgisi ile Arama -->
-                            <div class="accordion-item">
-                                <div class="accordion-header">
-                                    <span class="acc-title">1.1.3. Kimlik Bilgisi İle Arama</span>
-                                </div>
-                                <div class="accordion-body hidden">
-                                    <div class="form-row-simple">
-                                        <label>Kimlik Tip</label>
-                                        <div class="input-with-btn">
-                                            <input type="text" class="std-input" id="inp-kimlik-tip" readonly>
-                                            <button class="icon-btn" id="btn-open-kimlik-modal"><i
-                                                    class="fa-solid fa-binoculars"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="form-row-simple">
-                                        <label>Seri No</label>
-                                        <input type="text" class="std-input" style="width: 200px;">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Accordion Item 4: Detaylı Arama -->
-                            <div class="accordion-item">
-                                <div class="accordion-header">
-                                    <span class="acc-title">1.1.4. Detaylı Arama</span>
-                                </div>
-                                <div class="accordion-body hidden">
-                                    <!-- 3 Column Layout for Detailed Search -->
-                                    <div class="detailed-search-grid">
-                                        <!-- Column 1 -->
-                                        <div class="ds-col">
-                                            <div class="form-row-ds">
-                                                <label>Soyadı</label>
-                                                <input type="text" class="std-input" id="detay-soyadi">
-                                                <button class="help-btn">?</button>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Adı</label>
-                                                <input type="text" class="std-input" id="detay-adi">
-                                                <button class="help-btn">?</button>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Baba Adı</label>
-                                                <input type="text" class="std-input" id="detay-baba-adi">
-                                                <button class="help-btn">?</button>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Ana Adı</label>
-                                                <input type="text" class="std-input" id="detay-ana-adi">
-                                                <button class="help-btn">?</button>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Doğum Yeri</label>
-                                                <input type="text" class="std-input" id="detay-dogum-yeri">
-                                            </div>
-                                        </div>
-
-                                        <!-- Column 2 -->
-                                        <div class="ds-col">
-                                            <div class="form-row-ds">
-                                                <label>Doğum Tarihi Aralığı</label>
-                                                <div class="date-range">
-                                                    <input type="text" class="std-input date-input"
-                                                        id="detay-dogum-baslangic">
-                                                    <span>-</span>
-                                                    <input type="text" class="std-input date-input"
-                                                        id="detay-dogum-bitis">
-                                                </div>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>İl</label>
-                                                <input type="text" class="std-input" id="detay-il">
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>İlçe</label>
-                                                <div class="input-with-btn full-width">
-                                                    <input type="text" class="std-input" id="detay-ilce">
-                                                    <button class="icon-btn sm"><i
-                                                            class="fa-solid fa-binoculars"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Mahalle - Köy</label>
-                                                <div class="input-with-btn full-width">
-                                                    <input type="text" class="std-input" id="detay-mahalle">
-                                                    <button class="icon-btn sm"><i
-                                                            class="fa-solid fa-binoculars"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Cilt No.</label>
-                                                <input type="text" class="std-input" id="detay-cilt-no">
-                                            </div>
-                                        </div>
-
-                                        <!-- Column 3 -->
-                                        <div class="ds-col">
-                                            <div class="form-row-duble">
-                                                <div class="sub-field">
-                                                    <label>Aile Sıra No.</label>
-                                                    <input type="text" class="std-input" id="detay-aile-sira">
-                                                </div>
-                                                <div class="sub-field">
-                                                    <label>Sıra No.</label>
-                                                    <input type="text" class="std-input" id="detay-sira-no">
-                                                </div>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Uyruk</label>
-                                                <div class="input-with-btn full-width">
-                                                    <input type="text" class="std-input" id="detay-uyruk">
-                                                    <button class="icon-btn sm"><i
-                                                            class="fa-solid fa-binoculars"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Cinsiyet</label>
-                                                <div class="input-with-btn full-width">
-                                                    <input type="text" class="std-input" id="detay-cinsiyet">
-                                                    <button class="icon-btn sm"><i
-                                                            class="fa-solid fa-binoculars"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Vatandaşlık Tip</label>
-                                                <div class="input-with-btn full-width">
-                                                    <input type="text" class="std-input" id="detay-vatandaslik">
-                                                    <button class="icon-btn sm"><i
-                                                            class="fa-solid fa-binoculars"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="form-row-ds">
-                                                <label>Engel Tip</label>
-                                                <div class="input-with-btn full-width">
-                                                    <input type="text" class="std-input" id="detay-engel-tip">
-                                                    <button class="icon-btn sm"><i
-                                                            class="fa-solid fa-binoculars"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="panel-tabs">
+                        <div class="tab active" data-tab="arama-kriterleri">Kişi Arama Kriterleri</div>
+                        <div class="tab" data-tab="kisi-listesi">Kişi Listesi</div>
+                    </div>
+                    <div class="panel-content-scroll tab-content active" id="tab-arama-kriterleri">
+                        <!-- Arama Formu Buraya Gelecek -->
+                        <div class="accordion-item open">
+                            <div class="accordion-header"><span class="acc-title">1.1.1. Hızlı Arama</span></div>
+                            <div class="accordion-body">
+                                <div class="form-row-simple">
+                                    <label>Kişi Sistem No</label>
+                                    <input type="text" class="std-input" id="inp-kisi-sistem-no" style="width: 200px;">
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="panel-content-scroll tab-content hidden" id="tab-kisi-listesi">
+                        <table class="complex-table">
+                            <thead>
+                                <tr>
+                                    <th>Sistem No</th>
+                                    <th>Adı</th>
+                                    <th>Soyadı</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kisi-liste-tbody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </main>
+
+            <!-- Diğer Pencereler Iskeletleri -->
+            <div id="pencere-puantaj" class="pencere hidden">
+                <div class="pencere-baslik"><span class="baslik-metni">- Personel Puantaj Listesi</span>
+                    <div class="pencere-kontrolleri"><i class="fa-solid fa-xmark pencere-kapat-btn"></i></div>
+                </div>
+                <div class="pencere-icerik">
+                    <div class="panel-content-scroll">Personel Puantaj Listesi İçeriği...</div>
+                </div>
+            </div>
+
+            <div id="pencere-haciz-uyari" class="pencere hidden">
+                <div class="pencere-baslik"><span class="baslik-metni">- Bölge Md.'den Gönderilen Haciz Uyarıları</span>
+                    <div class="pencere-kontrolleri"><i class="fa-solid fa-xmark pencere-kapat-btn"></i></div>
+                </div>
+                <div class="pencere-icerik">
+                    <div class="panel-content-scroll">Haciz Uyarıları Paneli...</div>
+                </div>
+            </div>
+
+            <div id="pencere-yevmiye" class="pencere hidden">
+                <div class="pencere-baslik"><span class="baslik-metni">- Yevmiye Defteri</span>
+                    <div class="pencere-kontrolleri"><i class="fa-solid fa-xmark pencere-kapat-btn"></i></div>
+                </div>
+                <div class="pencere-icerik">
+                    <div class="panel-content-scroll">Yevmiye Defteri İçeriği...</div>
+                </div>
+            </div>
+
+            <!-- Ana Portal Penceresi (Alt tarafta afişli menü) -->
+            <div class="ana-menu-penceresi">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">TP004 - TAKBIS - TM Fonksiyonları (Versiyon : 2025.9.7.0)</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-solid fa-xmark btn-logout-app"></i>
+                    </div>
+                </div>
+                <div class="afis-alani" style="position: relative;">
+                    <div
+                        style="position: absolute; top: 15px; left: 20px; color: #fff; font-size: 18px; font-weight: bold; text-shadow: 1px 1px 3px #000;">
+                        VERSİYON 34.9</div>
+                    <div
+                        style="position: absolute; bottom: 15px; left: 20px; color: gold; font-size: 14px; font-weight: bold; text-shadow: 1px 1px 2px #000;">
+                        tk41671</div>
+                    <div class="afis-overlay-text">v.2025.12.23 - erdemalpar</div>
+                </div>
+                <div class="ikonlu-menu-bar">
+                    <div class="menu-ikonu-buton" id="menu-kisi-root">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Kişi/Org./Ülke</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item" data-open-window="pencere-kisi-sorgu">1.1. Kişi Bilgileri -
+                                Kişi Sorgulama</div>
+                            <div class="menu-popup-item">1.2. Tüzel Kişi Bilgileri</div>
+                            <div class="menu-popup-item">1.3. Yabancı Kimlik</div>
+                            <div class="menu-popup-item">1.4. Organizasyon Tanımları</div>
+                            <div class="menu-popup-item">1.5. Ülke Tanımları</div>
+                            <div class="menu-popup-item">1.6. Organizasyon Ülke Tanımları</div>
+                            <div class="menu-popup-item">1.7. Mahalle Sorgu</div>
+                        </div>
+                    </div>
+                    <div class="menu-ikonu-buton" id="menu-basvuru-root">
+                        <i class="fa-solid fa-circle-plus" style="color: #3498db;"></i>
+                        <span>Başvuru</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item">2.1. Başvuru Belgeleri</div>
+                            <div class="menu-popup-item">2.2. İş Yükü Monitörü</div>
+                            <div class="menu-popup-item" data-open-window="pencere-puantaj">2.3. Personel Puantaj
+                                Listesi</div>
+                            <div class="menu-popup-item" data-open-window="pencere-haciz-uyari">2.4. Bölge Müdürlüğünden
+                                Gönderilen Haciz Uyarıları</div>
+                            <div class="menu-popup-item">2.5. Personel - İşlem</div>
+                            <div class="menu-popup-item" data-open-window="pencere-yevmiye">2.6. Yevmiye Defteri</div>
+                            <div class="menu-popup-item">2.7. Temsil Azil Defteri</div>
+                            <div class="menu-popup-item">2.8. Düzeltmeler Sicili</div>
+                            <div class="menu-popup-item">2.9. Terkin Cetveli</div>
+                            <div class="menu-popup-item">2.10. SMS Geçmişi</div>
+                            <div class="menu-popup-item">2.11. Arşiv Belge</div>
+                            <div class="menu-popup-item">2.12. Halkla İlişkiler (Eksik Belge)</div>
+                            <div class="menu-popup-item">2.13. Akit Başvuruları</div>
+                        </div>
+                    </div>
+                    <div class="menu-ikonu-buton">
+                        <i class="fa-solid fa-gears" style="color: #777;"></i>
+                        <span>İşlemler</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item">3.1. Başvuru Monitörü (Ctrl+M)</div>
+                            <div class="menu-popup-item">3.2. İşlem Sorgulama</div>
+                            <div class="menu-popup-item">3.3. İşlem Durum Sorgulama</div>
+                            <div class="menu-popup-item">3.4. Durumlarına Göre İşlemler</div>
+                            <div class="menu-popup-item">3.5. Resmi Yazı İşlem</div>
+                            <div class="menu-popup-item">3.6. Döner Sermaye Fiş Atama</div>
+                            <div class="menu-popup-item">3.7. Aylık Tapu İstatistikleri Veri Girişi</div>
+                            <div class="menu-popup-item">3.8. Tapu Envanter Defteri</div>
+                            <div class="menu-popup-item">3.9. Akit Randevu İşlemleri</div>
+                            <div class="menu-popup-item">3.10. Anlık Akit Randevu İşlemleri</div>
+                            <div class="menu-popup-item">3.11. Elektronik İmza Talebi</div>
+                            <div class="menu-popup-item">3.12. Veri Düzeltme Onay İşlemleri</div>
+                        </div>
+                    </div>
+                    <div class="menu-ikonu-buton">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #2980b9;"></i>
+                        <span>Sorgulama</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item">4.1.Zemin Sorgulama</div>
+                            <div class="menu-popup-item">4.2.Zemin Sorgulama (Diğer Müdürlükler)</div>
+                            <div class="menu-popup-item">4.3.Taşınmaz Rayiç Bedel Sorgulama</div>
+                            <div class="menu-popup-item">4.5.GİB Otomatik Cins Değişikliği Bildirim İşlemleri <i
+                                    class="fa-solid fa-caret-right"></i></div>
+                            <div class="menu-popup-item sep">4.6. Tapu Kütüğü/Tapu Kütüğü İnceleme</div>
+
+                            <div class="menu-popup-item sep">4.7. Başvuru Sorgulama</div>
+
+                            <div class="menu-popup-item">4.8. Belge Sorgulama</div>
+                            <div class="menu-popup-item">4.9. Kimlik Bilgileri Beyanı Formu Sorgulama</div>
+                            <div class="menu-popup-item">4.10. Belge Düzenleyen Sorgulama</div>
+                            <div class="menu-popup-item">4.11. Noterler Birliği Vekaletname Sorgulama</div>
+                            <div class="menu-popup-item sep">4.12. Veraset İlamı Sorgulama <i
+                                    class="fa-solid fa-caret-right"></i></div>
+
+                            <div class="menu-popup-item">4.13. Şerh/Beyan/İrtifak Sorgulama</div>
+                            <div class="menu-popup-item">4.14. Rehin Sorgulama</div>
+                            <div class="menu-popup-item">4.15. Zemin Eklenti Sorgulama</div>
+                            <div class="menu-popup-item">4.16. Zemin Teferruat Sorgulama</div>
+                            <div class="menu-popup-item">4.17. Azil Sorgulama</div>
+                            <div class="menu-popup-item sep">4.18. Malik Birleştirme Sorgulama</div>
+
+                            <div class="menu-popup-item sep">4.19. Riskli İşlem Sorgulama</div>
+                            <div class="menu-popup-item sep">4.20. Özel Sorgu/Rapor</div>
+                            <div class="menu-popup-item sep">4.21. Taşınmaz Raporlama</div>
+                            <div class="menu-popup-item sep">4.22. Yabancılara Türk Vatandaşlığı Verilmesine Yönelik
+                                Uygunluk
+                                Sorgulaması</div>
+
+                            <div class="menu-popup-item">4.23. Temsil Edilen Kimlere Temsil Yetkisi Vermiş?</div>
+                            <div class="menu-popup-item sep">4.24. Temsil Eden Kimleri Temsilen İşlem Yapmış?</div>
+
+                            <div class="menu-popup-item sep">4.25. Yabancı Sorgulamaları <i
+                                    class="fa-solid fa-caret-right"></i></div>
+                            <div class="menu-popup-item sep">4.26. TAKBİS Ağ İletişimini Sorgula</div>
+                            <div class="menu-popup-item sep">4.27. Harç Sorguları <i
+                                    class="fa-solid fa-caret-right"></i>
+                            </div>
+                            <div class="menu-popup-item sep">4.28. Arşiv İmha Sorgulama</div>
+                            <div class="menu-popup-item sep">4.29. Dış Kurumlardan Gelen Belge/Proje Sorgulamaları</div>
+                            <div class="menu-popup-item sep">4.30. Elektronik Belge Yönetim İşlemleri</div>
+                            <div class="menu-popup-item sep">4.31. Mersis Tüzel Kişi Sorgulama</div>
+                            <div class="menu-popup-item sep">4.32. Randevu Sorgulama</div>
+                            <div class="menu-popup-item sep">4.33. Personel Performans Sorgulama</div>
+                            <div class="menu-popup-item sep">4.34. Risk Bildirim ve Sorgulama Ekranı</div>
+                            <div class="menu-popup-item sep">4.35. Kullanıcı İhlal Bilgileri</div>
+                            <div class="menu-popup-item sep">4.36. e-Tapu Kütüğü Sorgulama</div>
+                            <div class="menu-popup-item">4.37. Veraset İntikal İlişik Kesme Sorgula</div>
+                        </div>
+                    </div>
+                    <div class="menu-ikonu-buton">
+                        <i class="fa-solid fa-database" style="color: #8e44ad;"></i>
+                        <span>TM Arşivi</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item sep">5.1. e-Arşiv Tarama</div>
+                            <div class="menu-popup-item">5.2.Arşiv Yerleşim Tanımları</div>
+                            <div class="menu-popup-item sep">5.3.Arşiv Belgelerinin Kaydedilmesi</div>
+                            <div class="menu-popup-item">5.4.Arşiv Dosyalarının Sorgulanması</div>
+                            <div class="menu-popup-item sep">5.5.Arşiv Belgelerinin Sorgulanması</div>
+                            <div class="menu-popup-item">5.6.Resmi Senetlerin Arşivlenmesi</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-ikonu-buton">
+                        <i class="fa-solid fa-shield-halved" style="color: #2c3e50;"></i>
+                        <span>Güvenlik</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item">6.1. Yetki Devri</div>
+                            <div class="menu-popup-item">6.2. Bağlı Birimler</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-ikonu-buton">
+                        <i class="fa-solid fa-file-signature" style="color: #d35400;"></i>
+                        <span>Veri Düzeltme</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item">
+                                7.1.Zemin <i class="fa-solid fa-caret-right"></i>
+                                <div class="submenu">
+                                    <div class="menu-popup-item">7.1.1.Zemin Verisi Onay</div>
+                                </div>
+                            </div>
+                            <div class="menu-popup-item">
+                                7.2.Malik <i class="fa-solid fa-caret-right"></i>
+                                <div class="submenu">
+                                    <div class="menu-popup-item">7.2.1.Kişi Verisi Onay</div>
+                                    <div class="menu-popup-item">7.2.2.Tüzel Kişi Verisi Onay</div>
+                                    <div class="menu-popup-item">7.2.3.Mükerrer Malikleri Tek İsim Altında Toplama</div>
+                                </div>
+                            </div>
+                            <div class="menu-popup-item">
+                                7.3.Veri Düzeltme <i class="fa-solid fa-caret-right"></i>
+                                <div class="submenu">
+                                    <div class="menu-popup-item">7.3.1. Veri Zemin Alan</div>
+                                    <div class="menu-popup-item">7.3.2. Veri Zemin Cins</div>
+                                    <div class="menu-popup-item">7.3.3. Veri Zemin Hisse</div>
+                                    <div class="menu-popup-item">7.3.4. Veri Zemin Hisse Tevhidi</div>
+                                    <div class="menu-popup-item">7.3.5. Veri Zemin Eklenti</div>
+                                    <div class="menu-popup-item">7.3.6. Veri Zemin Muhdesat</div>
+                                    <div class="menu-popup-item">7.3.7. Veri Zemin Sigorta</div>
+                                    <div class="menu-popup-item">7.3.8. Veri Zemin Teferruat</div>
+                                    <div class="menu-popup-item">7.3.9. Veri Zemin Vergi</div>
+                                    <div class="menu-popup-item">7.3.10. İrtifak Girişi</div>
+                                    <div class="menu-popup-item sep">7.3.11. Veri İrtifak</div>
+
+                                    <div class="menu-popup-item">7.3.12. Rehin Girişi</div>
+                                    <div class="menu-popup-item">7.3.13. Veri Rehin</div>
+                                    <div class="menu-popup-item sep">7.3.14. Veri Rehin Müşterek Onay</div>
+
+                                    <div class="menu-popup-item">7.3.15. Veri Azil</div>
+                                    <div class="menu-popup-item">7.3.16. Veri Bağımsız Bölüm</div>
+                                    <div class="menu-popup-item">7.3.17. Parsel Verisi Düzeltme</div>
+                                    <div class="menu-popup-item sep">7.3.18. Veri İşlem Kayıt (Kadastro Kesinleşme)
+                                        Tarihi</div>
+
+                                    <div class="menu-popup-item">7.3.19. Veri Zemin Cilt Sayfa Onay</div>
+                                    <div class="menu-popup-item">7.3.20. Pasif Zemin Girişi</div>
+                                    <div class="menu-popup-item sep">7.3.21. Pasif Malik Girişi</div>
+
+                                    <div class="menu-popup-item">7.3.22. Rehin Kayıtları</div>
+                                    <div class="menu-popup-item">7.3.23. Veri Yevmiye Defteri</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-ikonu-buton">
+                        <i class="fa-solid fa-book" style="color: #16a085;"></i>
+                        <span>Zabit</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item">8.1.Zabıt Kayıt Defteri</div>
+                            <div class="menu-popup-item sep">8.2.Zabıt Kaydı Sorgulama</div>
+                            <div class="menu-popup-item">8.3.Zabıt Münakele Kontrol</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-ikonu-buton">
+                        <i class="fa-solid fa-circle-dot" style="color: #c0392b;"></i>
+                        <span>Veri Analiz</span>
+                        <div class="menu-popup">
+                            <div class="menu-popup-item sep">9.1. Veri Analiz Kayıtları</div>
+                            <div class="menu-popup-item">9.2. Resmi Senetten T.C. Kimlik Sorgulama</div>
+                            <div class="menu-popup-item">9.3. Dosyadan (Ada / Parsel ) T.C. Kimlik Bilgi Sorgulama</div>
+                            <div class="menu-popup-item">9.4. Hatalı Yabancı Mülkiyet Kayıtları</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-ikonu-buton btn-logout-app">
+                        <i class="fa-solid fa-circle-xmark" style="color: #c0392b;"></i>
+                        <span>Çıkış</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sağ Alt Durum Barı (Resim 10 Tablo Yapısı) -->
+        <div class="alt-bilgi-cubugu">
+            <div class="stat-group">
+                <div class="stat-header">Tarım Arazi Yönetimi</div>
+                <div class="stat-sub-row">
+                    <div class="stat-cell">
+                        <div class="label">Giden</div>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="label">Gelen</div>
+                        <div class="value">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">Belge Onay</div>
+                <div class="stat-sub-row">
+                    <div class="stat-cell">
+                        <div class="label">Red</div>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="label">Bekleyen</div>
+                        <div class="value">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">e-İmza</div>
+                <div class="stat-sub-row">
+                    <div class="stat-cell">
+                        <div class="label">Bekle</div>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="label">Hata</div>
+                        <div class="value">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">Yabancı</div>
+                <div class="stat-cell">
+                    <div class="label">Süreli İşl.</div>
+                    <div class="value">0</div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">Web</div>
+                <div class="stat-cell">
+                    <div class="label">Başvuru</div>
+                    <div class="value">0</div>
+                </div>
+            </div>
+
+            <div class="stat-group large-group">
+                <div class="stat-header">Yetki Talep</div>
+                <div class="stat-sub-row">
+                    <div class="stat-cell">
+                        <div class="label">Giden</div>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="label">Tescil</div>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="label">Gelen</div>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="label">Akit</div>
+                        <div class="value">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">Randevular</div>
+                <div class="stat-sub-row">
+                    <div class="stat-cell">
+                        <div class="label">Sıramatik</div>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="label">İmza</div>
+                        <div class="value">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">e-Devlet</div>
+                <div class="stat-cell">
+                    <div class="label">Beyan</div>
+                    <div class="value">0</div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">Bölge</div>
+                <div class="stat-cell">
+                    <div class="label">Uyarı</div>
+                    <div class="value">0</div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">Yeni</div>
+                <div class="stat-cell">
+                    <div class="label">Başvuru</div>
+                    <div class="value">0</div>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-header">Tescil</div>
+                <div class="stat-cell">
+                    <div class="label">Kontrol</div>
+                    <div class="value">0</div>
+                </div>
+            </div>
+
+            <div class="stat-icons">
+                <div class="stat-icon info-icon"><i class="fa-solid fa-info"></i></div>
+                <div class="stat-icon user-icon"><i class="fa-solid fa-user"></i></div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Modals -->
-    <div id="modal-kimlik-tip" class="modal-overlay hidden"></div>
-    <div id="modal-mutekabiliyet" class="modal-overlay hidden"></div>
-
+    <!-- Scripts -->
     <script src="database/database.js"></script>
     <script src="database/kisi.js"></script>
     <script src="database/tuzelkisi.js"></script>

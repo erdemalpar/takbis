@@ -1,4 +1,7 @@
-// TAKBİS Genel Veritabanı Yapılandırma ve Şema Modülü
+/**
+ * TAKBİS Veritabanı Modülü - JSON tabanlı basit veritabanı
+ * TAKBİS Genel Veritabanı Yapılandırma ve Şema Modülü
+ */
 
 // Veritabanı Şeması (Metadata)
 const veritabaniSemasi = {
@@ -10,18 +13,29 @@ const veritabaniSemasi = {
             aciklama: 'Kişi Bilgileri Tablosu',
             kayit_sayisi: 4,
             kolonlar: [
-                { kolon_adi: 'kisi_sistem_no', veri_tipi: 'VARCHAR(20)', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'Kişi Sistem Numarası' },
-                { kolon_adi: 'tc_kimlik_no', veri_tipi: 'VARCHAR(11)', null_olabilir: true, anahtar: '', aciklama: 'T.C. Kimlik Numarası' },
+                { kolon_adi: 'kisi_sistem_no', veri_tipi: 'VARCHAR(20)', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'Sistem No' },
+                { kolon_adi: 'tc_kimlik_no', veri_tipi: 'VARCHAR(11)', null_olabilir: true, anahtar: '', aciklama: 'T.C. Kimlik No' },
                 { kolon_adi: 'vergi_no', veri_tipi: 'VARCHAR(10)', null_olabilir: true, anahtar: '', aciklama: 'Vergi Numarası' },
                 { kolon_adi: 'soyadi', veri_tipi: 'VARCHAR(50)', null_olabilir: false, anahtar: '', aciklama: 'Soyadı' },
                 { kolon_adi: 'adi', veri_tipi: 'VARCHAR(50)', null_olabilir: false, anahtar: '', aciklama: 'Adı' },
+                { kolon_adi: 'bir_onceki_soyadi', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Bir Önceki Soyadı' },
                 { kolon_adi: 'baba_adi', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Baba Adı' },
                 { kolon_adi: 'ana_adi', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Ana Adı' },
                 { kolon_adi: 'dogum_yeri', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Doğum Yeri' },
                 { kolon_adi: 'dogum_tarihi', veri_tipi: 'DATE', null_olabilir: true, anahtar: '', aciklama: 'Doğum Tarihi' },
+                { kolon_adi: 'dogum_tarihi_baslangic', veri_tipi: 'DATE', null_olabilir: true, anahtar: '', aciklama: 'Doğum Tarihi Başlangıç' },
+                { kolon_adi: 'dogum_tarihi_bitis', veri_tipi: 'DATE', null_olabilir: true, anahtar: '', aciklama: 'Doğum Tarihi Bitiş' },
                 { kolon_adi: 'il', veri_tipi: 'VARCHAR(30)', null_olabilir: true, anahtar: '', aciklama: 'İl' },
                 { kolon_adi: 'ilce', veri_tipi: 'VARCHAR(30)', null_olabilir: true, anahtar: '', aciklama: 'İlçe' },
-                { kolon_adi: 'uyruk', veri_tipi: 'VARCHAR(30)', null_olabilir: true, anahtar: '', aciklama: 'Uyruk' }
+                { kolon_adi: 'mahalle_koy', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Mahalle/Köy' },
+                { kolon_adi: 'cilt_no', veri_tipi: 'VARCHAR(10)', null_olabilir: true, anahtar: '', aciklama: 'Cilt Numarası' },
+                { kolon_adi: 'aile_sira_no', veri_tipi: 'VARCHAR(10)', null_olabilir: true, anahtar: '', aciklama: 'Aile Sıra Numarası' },
+                { kolon_adi: 'sira_no', veri_tipi: 'VARCHAR(10)', null_olabilir: true, anahtar: '', aciklama: 'Sıra Numarası' },
+                { kolon_adi: 'uyruk', veri_tipi: 'VARCHAR(30)', null_olabilir: true, anahtar: '', aciklama: 'Uyruk' },
+                { kolon_adi: 'cinsiyet', veri_tipi: 'VARCHAR(10)', null_olabilir: true, anahtar: '', aciklama: 'Cinsiyet' },
+                { kolon_adi: 'vatandaslik_tip', veri_tipi: 'VARCHAR(30)', null_olabilir: true, anahtar: '', aciklama: 'Vatandaşlık Tipi' },
+                { kolon_adi: 'engel_tip', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Engel Tipi' },
+                { kolon_adi: 'islem_sistem_no', veri_tipi: 'VARCHAR(20)', null_olabilir: true, anahtar: '', aciklama: 'İşlem Sistem Numarası' }
             ]
         },
         {
@@ -111,36 +125,12 @@ const veritabaniSemasi = {
                 { kolon_adi: 'pafta_no', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Pafta' },
                 { kolon_adi: 'ada_no', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Ada' },
                 { kolon_adi: 'parsel_no', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Parsel' },
-                {
-                    kolon_adi: 'parsel_durumu',
-                    veri_tipi: 'INT',
-                    null_olabilir: true,
-                    anahtar: '',
-                    aciklama: 'Parsel Durumu (0:Bilinmiyor, 1:Taslak, 2:Ölecek, 3:Ölü, 4:Yaşayan)'
-                },
-                {
-                    kolon_adi: 'parsel_tip',
-                    veri_tipi: 'INT',
-                    null_olabilir: true,
-                    anahtar: '',
-                    aciklama: 'Parsel Tipi (0:Bilinmiyor, 1:İmar Parseli, 2:Kadastro Parseli, 3:İhdas Parseli, 4:Terk Parseli, 5:DOP, 6:Hisse Terk Parseli, 7:Geçici Parsel, 8:Kamu Ortaklık Payı)'
-                },
-                {
-                    kolon_adi: 'kayit_sekli',
-                    veri_tipi: 'INT',
-                    null_olabilir: true,
-                    anahtar: '',
-                    aciklama: 'Kayıt Şekli (0:Bilinmiyor, 1:Toplu Veri Aktarım, 2:Tapu, 3:Kadastro, 4:İmar İşleminin İptali (Dop/K), 5:Doptan Parsel Oluşturma)'
-                },
+                { kolon_adi: 'parsel_durumu', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Parsel Durumu' },
+                { kolon_adi: 'parsel_tip', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Parsel Tipi' },
+                { kolon_adi: 'kayit_sekli', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Kayıt Şekli' },
                 { kolon_adi: 'tescil_tarih', veri_tipi: 'VARCHAR(20)', null_olabilir: true, anahtar: '', aciklama: 'Tescil' },
                 { kolon_adi: 'kadastroalan', veri_tipi: 'FLOAT', null_olabilir: true, anahtar: '', aciklama: 'Alan' },
-                {
-                    kolon_adi: 'aktif',
-                    veri_tipi: 'BOOLEAN',
-                    null_olabilir: true,
-                    anahtar: '',
-                    aciklama: 'Aktif mi (0:Bilinmiyor, 1:Aktif, 2:Pasif)'
-                }
+                { kolon_adi: 'aktif', veri_tipi: 'BOOLEAN', null_olabilir: true, anahtar: '', aciklama: 'Aktif mi' }
             ]
         },
         {
@@ -150,75 +140,11 @@ const veritabaniSemasi = {
             kolonlar: [
                 { kolon_adi: 'id', veri_tipi: 'INT', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'ID' },
                 { kolon_adi: 'parsel_ref', veri_tipi: 'INT', null_olabilir: false, anahtar: 'FOREIGN KEY', aciklama: 'Parsel' },
-                {
-                    kolon_adi: 'zemin_tip',
-                    veri_tipi: 'INT',
-                    null_olabilir: true,
-                    anahtar: '',
-                    aciklama: 'Zemin Tipi (0:Bilinmiyor, 1:Ana Taşınmaz, 2:Kat Mülkiyeti, 3:Daimi Müstakil Hak, 4:Muhdesat, 5:Kamu Orta Malı)'
-                },
+                { kolon_adi: 'zemin_tip', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Zemin Tipi' },
                 { kolon_adi: 'erisim_kod', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Erişim Kodu' },
-                {
-                    kolon_adi: 'tapu_bolum_durum',
-                    veri_tipi: 'INT',
-                    null_olabilir: true,
-                    anahtar: '',
-                    aciklama: 'Tapu Bölüm Durumu (0:Bilinmiyor, 1:Taslak, 2:Aktif, 3:Pasif, 4:KMAktifYapacak, 5:Red, 6:SarfiNazar, 7:ZamanAsimindanPasif)'
-                },
-                {
-                    kolon_adi: 'km_kuruldu',
-                    veri_tipi: 'INT',
-                    null_olabilir: true,
-                    anahtar: '',
-                    aciklama: 'KM Kuruldu (0:AT, 1:KM, 2:Kİ, 3:DevreMülk)'
-                },
+                { kolon_adi: 'tapu_bolum_durum', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Bölüm Durumu' },
+                { kolon_adi: 'km_kuruldu', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'KM Kuruldu' },
                 { kolon_adi: 'kayit_tarihi', veri_tipi: 'VARCHAR(20)', null_olabilir: true, anahtar: '', aciklama: 'Kayıt' }
-            ]
-        },
-        {
-            tablo_adi: 'zeminCins',
-            aciklama: 'Zemin Cins Bilgileri',
-            kayit_sayisi: 2,
-            kolonlar: [
-                { kolon_adi: 'id', veri_tipi: 'INT', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'ID' },
-                { kolon_adi: 'zemin_ref', veri_tipi: 'INT', null_olabilir: false, anahtar: 'FOREIGN KEY', aciklama: 'Zemin' },
-                { kolon_adi: 'tasinmaz_cins_ref', veri_tipi: 'BIGINT', null_olabilir: true, anahtar: '', aciklama: 'Cins Ref' },
-                { kolon_adi: 'tasinmaz_cins_aciklama', veri_tipi: 'VARCHAR(500)', null_olabilir: true, anahtar: '', aciklama: 'Açıklama' }
-            ]
-        },
-        {
-            tablo_adi: 'zeminAlan',
-            aciklama: 'Zemin Alan Bilgileri',
-            kayit_sayisi: 2,
-            kolonlar: [
-                { kolon_adi: 'id', veri_tipi: 'INT', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'ID' },
-                { kolon_adi: 'zemin_ref', veri_tipi: 'INT', null_olabilir: false, anahtar: 'FOREIGN KEY', aciklama: 'Zemin' },
-                { kolon_adi: 'alan', veri_tipi: 'FLOAT', null_olabilir: false, anahtar: '', aciklama: 'Alan (m2)' },
-                { kolon_adi: 'arsa_pay', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Pay' },
-                { kolon_adi: 'arsa_payda', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Payda' }
-            ]
-        },
-        {
-            tablo_adi: 'bagimsizBolum',
-            aciklama: 'Bağımsız Bölüm Bilgileri',
-            kayit_sayisi: 11,
-            kolonlar: [
-                { kolon_adi: 'id', veri_tipi: 'INT', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'ID' },
-                { kolon_adi: 'zemin_ref', veri_tipi: 'INT', null_olabilir: false, anahtar: 'FOREIGN KEY', aciklama: 'Zemin' },
-                { kolon_adi: 'bagimsiz_bolum_no', veri_tipi: 'INT', null_olabilir: false, anahtar: '', aciklama: 'No' },
-                { kolon_adi: 'kat', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Kat' },
-                { kolon_adi: 'blok', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Blok' },
-                { kolon_adi: 'kayit_tarihi', veri_tipi: 'VARCHAR(20)', null_olabilir: true, anahtar: '', aciklama: 'Kayıt' }
-            ]
-        },
-        {
-            tablo_adi: 'bagimsizBolumCins',
-            aciklama: 'Bağımsız Bölüm Cins Bilgileri',
-            kayit_sayisi: 13,
-            kolonlar: [
-                { kolon_adi: 'id', veri_tipi: 'INT', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'ID' },
-                { kolon_adi: 'zemin_ref', veri_tipi: 'INT', null_olabilir: false, anahtar: 'FOREIGN KEY', aciklama: 'Zemin' },
-                { kolon_adi: 'tasinmaz_cins_aciklama', veri_tipi: 'VARCHAR(500)', null_olabilir: true, anahtar: '', aciklama: 'Açıklama' }
             ]
         },
         {
@@ -227,34 +153,148 @@ const veritabaniSemasi = {
             kayit_sayisi: 13,
             kolonlar: [
                 { kolon_adi: 'id', veri_tipi: 'INT', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'ID' },
-                { kolon_adi: 'tuzel_kisi_tip_ref', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Tip Ref' },
                 { kolon_adi: 'adi', veri_tipi: 'VARCHAR(250)', null_olabilir: false, anahtar: '', aciklama: 'Kurum Adı' },
                 { kolon_adi: 'vergi_no', veri_tipi: 'VARCHAR(20)', null_olabilir: true, anahtar: '', aciklama: 'Vergi No' },
                 { kolon_adi: 'sicil_no', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Sicil No' },
-                { kolon_adi: 'faal_mi', veri_tipi: 'INT', null_olabilir: true, anahtar: '', aciklama: 'Faal mi' },
                 { kolon_adi: 'tuzel_kisi_tip_adi', veri_tipi: 'VARCHAR(100)', null_olabilir: true, anahtar: '', aciklama: 'Tip Adı' },
-                { kolon_adi: 'gercek_adi', veri_tipi: 'VARCHAR(250)', null_olabilir: true, anahtar: '', aciklama: 'Gerçek Adı' },
-                { kolon_adi: 'kayit_tarihi', veri_tipi: 'VARCHAR(30)', null_olabilir: true, anahtar: '', aciklama: 'Kayıt Tarihi' },
-                { kolon_adi: 'mersis_no', veri_tipi: 'VARCHAR(30)', null_olabilir: true, anahtar: '', aciklama: 'Mersis No' }
-            ]
-        },
-        {
-            tablo_adi: 'yabanci_kisi',
-            aciklama: 'Yabancı Kişi Sorgu ve Kayıt İşlemleri',
-            kayit_sayisi: 1,
-            kolonlar: [
-                { kolon_adi: 'id', veri_tipi: 'INT', null_olabilir: false, anahtar: 'PRIMARY KEY', aciklama: 'ID' },
-                { kolon_adi: 'yabanci_kimlik_no', veri_tipi: 'VARCHAR(15)', null_olabilir: false, anahtar: '', aciklama: 'Yabancı Kimlik No' },
-                { kolon_adi: 'adi', veri_tipi: 'VARCHAR(50)', null_olabilir: false, anahtar: '', aciklama: 'Adı' },
-                { kolon_adi: 'soyadi', veri_tipi: 'VARCHAR(50)', null_olabilir: false, anahtar: '', aciklama: 'Soyadı' },
-                { kolon_adi: 'dogum_tarihi', veri_tipi: 'VARCHAR(15)', null_olabilir: true, anahtar: '', aciklama: 'Doğum Tarihi' },
-                { kolon_adi: 'dogum_uyruk', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Doğum Uyruk' },
-                { kolon_adi: 'kisi_uyruk', veri_tipi: 'VARCHAR(50)', null_olabilir: true, anahtar: '', aciklama: 'Kişi Uyruk' },
-                { kolon_adi: 'dosya_no', veri_tipi: 'VARCHAR(20)', null_olabilir: true, anahtar: '', aciklama: 'Dosya No' }
+                { kolon_adi: 'kayit_tarihi', veri_tipi: 'VARCHAR(30)', null_olabilir: true, anahtar: '', aciklama: 'Kayıt Tarihi' }
             ]
         }
     ]
 };
+
+const kisiVeritabani = {
+    kisiler: [
+        {
+            kisi_sistem_no: '74440384',
+            tc_kimlik_no: '23666443662',
+            vergi_no: '',
+            soyadi: 'ALPAR',
+            adi: 'ŞEVKET SERDAL',
+            bir_onceki_soyadi: '',
+            baba_adi: 'ALİİHSAN',
+            ana_adi: 'HANİFE İNCİ',
+            dogum_yeri: 'ULA',
+            dogum_tarihi: '14/01/1981',
+            dogum_tarihi_baslangic: '14/01/1981',
+            dogum_tarihi_bitis: '14/01/1981',
+            il: 'MUĞLA',
+            ilce: 'ULA',
+            mahalle_koy: 'MERKEZ',
+            cilt_no: '125',
+            aile_sira_no: '45',
+            sira_no: '12',
+            uyruk: 'TÜRKİYE',
+            cinsiyet: 'ERKEK',
+            vatandaslik_tip: 'T.C. VATANDAŞI',
+            engel_tip: '',
+            islem_sistem_no: ''
+        },
+        {
+            kisi_sistem_no: '16001379',
+            tc_kimlik_no: '23666443662',
+            vergi_no: '',
+            soyadi: 'ALPAR',
+            adi: 'ŞEVKET SERDAL',
+            bir_onceki_soyadi: '',
+            baba_adi: 'ALİİHSAN',
+            ana_adi: 'HANİFE İNCİ',
+            dogum_yeri: 'ULA',
+            dogum_tarihi: '14/01/1981',
+            dogum_tarihi_baslangic: '14/01/1981',
+            dogum_tarihi_bitis: '14/01/1981',
+            il: 'MUĞLA',
+            ilce: 'ULA',
+            mahalle_koy: 'MERKEZ',
+            cilt_no: '125',
+            aile_sira_no: '45',
+            sira_no: '12',
+            uyruk: 'TÜRKİYE',
+            cinsiyet: 'ERKEK',
+            vatandaslik_tip: 'T.C. VATANDAŞI',
+            engel_tip: '',
+            islem_sistem_no: ''
+        },
+        {
+            kisi_sistem_no: '88990011',
+            tc_kimlik_no: '11122233344',
+            vergi_no: '1234567890',
+            soyadi: 'YILMAZ',
+            adi: 'MEHMET',
+            bir_onceki_soyadi: '',
+            baba_adi: 'ALİ',
+            ana_adi: 'AYŞE',
+            dogum_yeri: 'ANKARA',
+            dogum_tarihi: '05/03/1975',
+            dogum_tarihi_baslangic: '05/03/1975',
+            dogum_tarihi_bitis: '05/03/1975',
+            il: 'ANKARA',
+            ilce: 'ÇANKAYA',
+            mahalle_koy: 'BAHÇELIEVLER',
+            cilt_no: '89',
+            aile_sira_no: '23',
+            sira_no: '7',
+            uyruk: 'TÜRKİYE',
+            cinsiyet: 'ERKEK',
+            vatandaslik_tip: 'T.C. VATANDAŞI',
+            engel_tip: '',
+            islem_sistem_no: ''
+        },
+        {
+            kisi_sistem_no: '55667788',
+            tc_kimlik_no: '98765432109',
+            vergi_no: '',
+            soyadi: 'KAYA',
+            adi: 'FATİH',
+            bir_onceki_soyadi: '',
+            baba_adi: 'MUSTAFA',
+            ana_adi: 'ZEYNEP',
+            dogum_yeri: 'İSTANBUL',
+            dogum_tarihi: '12/08/1990',
+            dogum_tarihi_baslangic: '12/08/1990',
+            dogum_tarihi_bitis: '12/08/1990',
+            il: 'İSTANBUL',
+            ilce: 'KADIKÖY',
+            mahalle_koy: 'GÖZTEPE',
+            cilt_no: '456',
+            aile_sira_no: '78',
+            sira_no: '34',
+            uyruk: 'TÜRKİYE',
+            cinsiyet: 'ERKEK',
+            vatandaslik_tip: 'T.C. VATANDAŞI',
+            engel_tip: '',
+            islem_sistem_no: ''
+        }
+    ]
+};
+
+// Kişi sistem numarasına göre sorgulama
+function kisiSistemNoIleSorgula(sistemNo) {
+    return kisiVeritabani.kisiler.filter(kisi => kisi.kisi_sistem_no === sistemNo);
+}
+
+// TC Kimlik numarasına göre sorgulama
+function tcKimlikNoIleSorgula(tcNo) {
+    return kisiVeritabani.kisiler.filter(kisi => kisi.tc_kimlik_no === tcNo);
+}
+
+// Detaylı arama
+function detayliArama(kriterler) {
+    return kisiVeritabani.kisiler.filter(kisi => {
+        let eslesme = true;
+        if (kriterler.soyadi && !kisi.soyadi.toUpperCase().includes(kriterler.soyadi.toUpperCase())) eslesme = false;
+        if (kriterler.adi && !kisi.adi.toUpperCase().includes(kriterler.adi.toUpperCase())) eslesme = false;
+        if (kriterler.baba_adi && !kisi.baba_adi.toUpperCase().includes(kriterler.baba_adi.toUpperCase())) eslesme = false;
+        if (kriterler.ana_adi && !kisi.ana_adi.toUpperCase().includes(kriterler.ana_adi.toUpperCase())) eslesme = false;
+        if (kriterler.dogum_yeri && !kisi.dogum_yeri.toUpperCase().includes(kriterler.dogum_yeri.toUpperCase())) eslesme = false;
+        return eslesme;
+    });
+}
+
+// Tüm kişileri getir
+function tumKisileriGetir() {
+    return kisiVeritabani.kisiler;
+}
 
 // Veritabanı şemasını getir
 function veritabaniSemasiGetir() {
@@ -272,12 +312,7 @@ function tabloVerileriniGetir(tabloAdi) {
         case 'kurum': return (typeof tumKurumlariGetir === 'function') ? tumKurumlariGetir() : [];
         case 'parsel': return (typeof tumParselleriGetir === 'function') ? tumParselleriGetir() : [];
         case 'zemin': return (typeof tumZeminleriGetir === 'function') ? tumZeminleriGetir() : [];
-        case 'zeminCins': return (typeof tumZeminCinsleriniGetir === 'function') ? tumZeminCinsleriniGetir() : [];
-        case 'zeminAlan': return (typeof tumZeminAlanlariGetir === 'function') ? tumZeminAlanlariGetir() : [];
-        case 'bagimsizBolum': return (typeof tumBagimsizBolumleriGetir === 'function') ? tumBagimsizBolumleriGetir() : [];
-        case 'bagimsizBolumCins': return (typeof tumBagimsizBolumCinsleriniGetir === 'function') ? tumBagimsizBolumCinsleriniGetir() : [];
         case 'tuzel_kisi': return (typeof tumTuzelKisileriGetir === 'function') ? tumTuzelKisileriGetir() : [];
-        case 'yabanci_kisi': return (typeof tumYabanciKisileriGetir === 'function') ? tumYabanciKisileriGetir() : [];
         default: return [];
     }
 }
@@ -285,6 +320,10 @@ function tabloVerileriniGetir(tabloAdi) {
 // Modül olarak export et
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
+        kisiSistemNoIleSorgula,
+        tcKimlikNoIleSorgula,
+        detayliArama,
+        tumKisileriGetir,
         veritabaniSemasiGetir,
         tabloVerileriniGetir
     };

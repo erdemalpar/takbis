@@ -1,800 +1,694 @@
-/* Reset & Base */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    height: 100vh;
+body,
+html {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     background-color: #f0f0f0;
 }
 
-.view {
+/* === LOGIN EKRANI (Yeni Tasarım - Resim 3) === */
+#login-view {
     width: 100%;
     height: 100%;
+    background: #0d001a url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Sağ tarafa yasla */
+    position: relative;
+    z-index: 100;
+    overflow: hidden;
+}
+
+#login-view::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    transition: opacity 0.3s ease;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(80, 0, 120, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1;
 }
 
-.view.hidden {
+.login-overlay-full {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 80px;
+}
+
+.login-close-x {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Sol Üst Logo */
+.login-tk-side-logo {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.tk-logo-img-wrapper {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #005a9e;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+}
+
+.tk-circle-inner {
+    display: flex;
+    align-items: baseline;
+    font-family: serif;
+    font-weight: bold;
+}
+
+.tk-letter {
+    color: #f39c12;
+    font-size: 45px;
+}
+
+.tk-letter-alt {
+    color: #2980b9;
+    font-size: 45px;
+    margin-left: -5px;
+}
+
+.tk-logo-text-vertical {
+    text-align: center;
+}
+
+.tk-logo-text-vertical strong {
+    display: block;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.tk-logo-text-vertical span {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Sağ Form Paneli */
+.login-right-panel {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    width: 480px;
+    padding: 60px 40px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    height: auto;
+    position: relative;
+}
+
+.login-main-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.login-form-row {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.login-form-row label {
+    width: 140px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-input-box {
+    flex: 1;
+}
+
+.login-input-box input,
+.login-input-box select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #fff;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-action-area {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.btn-win-classic {
+    padding: 4px 35px;
+    background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+    border: 1px solid #777;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-win-classic:hover {
+    background: #f0f0f0;
+}
+
+.login-link-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.login-link-group a {
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.login-link-group a:hover {
+    text-decoration: underline;
+}
+
+/* Sağ Alt BT Logo */
+.login-bt-bottom-logo {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.bt-icon-new {
+    background: #2980b9;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.bt-icon-new .t-char {
+    color: #f39c12;
+}
+
+.bt-text-new {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.1;
+}
+
+.bt-text-new strong {
+    display: block;
+    font-size: 18px;
+}
+
+.login-bottom-copyright {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+}
+
+/* === MASAÜSTÜ ORTAMI (EXE GÖRÜNÜMÜ) === */
+#ana-masaustu {
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2070') no-repeat center center;
+    background-size: cover;
+    position: relative;
     display: none;
-    opacity: 0;
+}
+
+#ana-masaustu.aktif {
+    display: block;
 }
 
 .hidden {
     display: none !important;
 }
 
-.view.active {
-    display: block;
-    opacity: 1;
-}
-
-/* === LOGIN SCREEN === */
-#login-view {
-    background: linear-gradient(135deg, #1cb5e0 0%, #000046 100%);
-    /* Fallback */
-    background: url('https://w.wallhaven.cc/full/vg/wallhaven-vg88p5.jpg') no-repeat center center fixed;
-    background-size: cover;
-}
-
-.login-bg-layer {
+/* === PENCERE YAPISI === */
+.pencere {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, rgba(8, 107, 184, 0.8) 0%, rgba(89, 12, 60, 0.85) 100%);
-    z-index: 1;
-}
-
-/* Top Logo */
-.login-top-logo {
-    position: absolute;
-    top: 40px;
-    left: 60px;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    color: white;
-}
-
-.tk-logo-circle {
-    width: 60px;
-    height: 60px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-.tk-chars {
-    font-size: 32px;
-    font-weight: bold;
-    color: #e67e22;
-    /* Orange-ish */
-    font-family: serif;
-}
-
-.tk-text h1 {
-    font-size: 20px;
-    margin-bottom: 2px;
-}
-
-.tk-text p {
-    font-size: 14px;
-    font-weight: 300;
-}
-
-/* Login Box */
-.login-box {
-    position: absolute;
-    top: 50%;
-    right: 10%;
-    /* Positioned to the right as per screenshot */
-    transform: translateY(-50%);
-    width: 450px;
-    z-index: 2;
-}
-
-.form-title {
-    color: white;
-    font-weight: 300;
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 10px;
-}
-
-#login-form {
-    background: rgba(80, 0, 50, 0.4);
-    /* Dark reddish transparent bg */
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.form-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.form-row label {
-    width: 120px;
-    color: white;
-    font-weight: 500;
-    font-size: 14px;
-}
-
-.input-wrapper {
-    flex: 1;
-}
-
-.form-row input,
-.form-row select {
-    width: 100%;
-    padding: 6px 10px;
-    border: none;
-    border-radius: 2px;
-    font-size: 14px;
-    color: #333;
-}
-
-.readonly-input {
-    background-color: #e0e0e0;
-}
-
-.form-footer {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.btn-login {
-    background-color: #f5f5f5;
-    border: none;
-    padding: 8px 30px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-    border-radius: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.btn-login:hover {
-    background-color: #fff;
-}
-
-.login-links {
+    background: #fff;
+    border: 1px solid #005a9e;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-}
-
-.login-links a {
-    color: #4facfe;
-    text-decoration: underline;
-    font-size: 12px;
-    margin-bottom: 4px;
-}
-
-.login-links a:hover {
-    color: #fff;
-}
-
-/* BT Logo bottom right of form */
-.bt-logo-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    color: white;
-}
-
-.bt-icon {
-    font-size: 30px;
-    font-weight: bold;
-    margin-right: 10px;
-    color: #3498db;
-}
-
-.bt-text {
-    text-align: left;
-    font-size: 14px;
-    line-height: 1.2;
-}
-
-.copyright-bar {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 11px;
-    z-index: 2;
-}
-
-
-/* === DASHBOARD SCREEN === */
-#dashboard-view {
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-}
-
-.dashboard-header {
-    height: 80px;
-    position: relative;
-    overflow: hidden;
-    color: white;
-}
-
-.header-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #1c3b7f 0%, #6e0c4a 100%);
-    /* Blue to Deep Red/Purple */
-    z-index: 1;
-}
-
-/* Add some stylized lines to header bg if possible */
-.header-bg::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.05) 10px, rgba(255, 255, 255, 0.05) 20px);
-}
-
-.header-main-content {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.header-title {
-    font-size: 24px;
-    font-weight: 500;
-    margin-left: 200px;
-    /* Offset for menu if needed, or structured centering */
-    text-align: center;
-    flex: 1;
-}
-
-.header-right-logo {
-    display: flex;
-    align-items: center;
-}
-
-.tk-logo-circle-sm {
-    width: 40px;
-    height: 40px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    color: #e67e22;
-    font-weight: bold;
-    font-family: serif;
-    font-size: 20px;
-}
-
-.tk-text-sm {
-    text-align: right;
-}
-
-.tk-text-sm span {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.tk-text-sm small {
-    display: block;
-    font-size: 11px;
-    font-weight: 300;
-}
-
-/* Toolbar */
-.toolbar {
-    background: #eef2f5;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 10;
-}
-
-.menu-item {
-    padding: 0 15px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    border-right: 1px solid #dcdcdc;
-    font-size: 13px;
-    color: #333;
-    position: relative;
-    transition: background 0.2s;
-}
-
-.menu-item:first-child {
-    border-left: 1px solid #dcdcdc;
-}
-
-.menu-item:hover,
-.menu-item.active {
-    background-color: #dbe4ea;
-    color: #000;
-}
-
-.menu-label i {
-    margin-right: 6px;
-    color: #3498db;
-    font-size: 16px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.menu-item:nth-child(2) .menu-label i {
-    color: #3498db;
-}
-
-.menu-item:nth-child(9) .menu-label i {
-    color: #e74c3c;
-}
-
-.btn-logout .menu-label i {
-    color: #c0392b !important;
-}
-
-/* Dropdown */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 220px;
-    background: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    min-height: 200px;
     z-index: 100;
 }
 
-.menu-item.active .dropdown-menu {
-    display: block;
-}
-
-.dropdown-item {
-    padding: 8px 15px;
-    color: #333;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.dropdown-item:hover {
-    background-color: #f0f8ff;
-    color: #000;
-}
-
-.ml-auto {
-    margin-left: auto;
-    font-size: 10px;
-    color: #999;
-}
-
-.dropdown-separator {
-    height: 1px;
-    background: #ddd;
-    margin: 2px 0;
-}
-
-
-/* Content Area */
-.content-area {
-    flex: 1;
-    padding: 20px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.workspace {
-    flex: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.welcome-msg {
-    text-align: center;
-    margin-top: 50px;
-    color: #777;
-}
-
-/* === WORKSPACE PANELS === */
-.workspace-panel {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.inner-window {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    background: #f0f0f0;
-}
-
-.window-content-inner {
-    flex: 1;
-    overflow-y: auto;
-    background: #fff;
-}
-
-.workspace-panel.hidden {
-    display: none;
-}
-
-.workspace-panel.active {
-    display: block;
-}
-
-/* Simulated Window */
-.inner-window {
-    background: #eef2f5;
-    border: 1px solid #999;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.window-header {
-    background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);
-    padding: 5px 10px;
-    border-bottom: 1px solid #aaa;
+.pencere-baslik {
+    background: linear-gradient(to bottom, #005a9e, #004578);
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
-    color: #333;
-    font-size: 14px;
+    cursor: move;
 }
 
-.window-controls i {
+.pencere-kontrolleri i {
     margin-left: 8px;
     cursor: pointer;
-    color: #555;
     font-size: 14px;
 }
 
-.window-controls i:hover {
-    color: #000;
+.pencere-kontrolleri i:hover {
+    color: #ff9900;
 }
 
-/* Panel Toolbar */
+.pencere-icerik {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === TOOLBAR (Pencere içi araç çubuğu) === */
 .panel-toolbar {
-    background: #f0f0f0;
-    padding: 5px;
+    background: #f3f3f3;
+    padding: 4px;
     border-bottom: 1px solid #ccc;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.toolbar-left {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
-.toolbar-right {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
-
-.toolbar-group {
-    display: flex;
-    margin-right: 5px;
-}
-
-.toolbar-separator {
-    width: 1px;
-    height: 24px;
-    background: #ccc;
-    margin: 0 8px;
-    border-right: 1px solid #fff;
+    gap: 4px;
 }
 
 .t-btn {
     border: 1px solid transparent;
     background: transparent;
-    width: 28px;
-    height: 28px;
-    border-radius: 3px;
+    padding: 4px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    color: #555;
-    margin-right: 2px;
+    border-radius: 2px;
 }
 
 .t-btn:hover {
-    background: #e6e6e6;
-    border: 1px solid #d0d0d0;
+    background: #e2e2e2;
+    border: 1px solid #bbb;
 }
 
-.toolbar-right {
-    margin-left: auto;
-    display: flex;
+.t-btn i {
+    font-size: 14px;
 }
 
-/* Tabs */
+/* === SEKMELER (Tabs) === */
 .panel-tabs {
     display: flex;
-    background: #eaeaea;
-    border-bottom: 1px solid #ccc;
+    background: #f0f0f0;
+    border-bottom: 1px solid #005a9e;
     padding-top: 5px;
     padding-left: 5px;
 }
 
 .tab {
-    padding: 6px 15px;
-    background: #ddd;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
     border: 1px solid #ccc;
     border-bottom: none;
     margin-right: 2px;
-    font-size: 13px;
-    cursor: pointer;
-    color: #666;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    background: #e1e1e1;
+    color: #000080;
 }
 
 .tab.active {
     background: #fff;
-    font-weight: bold;
-    color: #333;
+    border-color: #005a9e;
+    border-bottom: 1px solid #fff;
     position: relative;
     top: 1px;
-    /* Cover border */
-    border-bottom: 1px solid #fff;
 }
 
-/* Content Scroll Area */
+/* === FORM ALANLARI === */
 .panel-content-scroll {
-    display: none;
     flex: 1;
-    overflow-y: auto !important;
-    max-height: calc(100vh - 200px);
-    /* Pencere dışına taşmayı önler */
+    overflow-y: auto;
     padding: 10px;
-    background: white;
+    background: #f8faff;
 }
 
-.panel-content-scroll.active {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Accordion Open State Override */
-.accordion-item.open .accordion-body,
-.accordion-item.open .takbis-acc-body {
-    display: block !important;
-}
-
-.accordion-item.open .accordion-body.hidden {
-    display: block !important;
-}
-
-/* Accordion */
 .accordion-item {
-    border: 1px solid #ccc;
+    border: 1px solid #abc;
     margin-bottom: 5px;
 }
 
 .accordion-header {
-    background: linear-gradient(to bottom, #f9f9f9 0%, #e0e0e0 100%);
-    padding: 8px 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ccc;
+    background: #e1e1e1;
+    padding: 3px 10px;
+    font-size: 11px;
     font-weight: bold;
-    font-size: 13px;
-    color: #3b5998;
-    /* Dark Blueish */
-    display: flex;
-    align-items: center;
-}
-
-.acc-title {
-    font-family: inherit;
-}
-
-.accordion-header:hover {
-    background: #ebecf1;
+    color: #000080;
+    border-bottom: 1px solid #abc;
 }
 
 .accordion-body {
-    padding: 15px;
-    background: #eaf2fb;
-    /* Light blue tint */
+    padding: 10px;
+    background: #fff;
 }
 
-.accordion-body.hidden {
-    display: none;
-}
-
-.accordion-item.open .accordion-header {
-    border-bottom: 1px solid #ccc;
-}
-
-.accordion-item:not(.open) .accordion-header {
-    border-bottom: none;
-}
-
-/* Forms */
 .form-row-simple {
     display: flex;
+    margin-bottom: 5px;
     align-items: center;
-    margin-bottom: 8px;
 }
 
 .form-row-simple label {
-    width: 150px;
-    font-size: 13px;
-    color: #333;
-    font-weight: 500;
+    width: 140px;
+    font-size: 11px;
+    color: #000080;
 }
 
 .std-input {
-    border: 1px solid #abc;
-    padding: 4px;
-    font-size: 13px;
-    border-radius: 2px;
-}
-
-.std-input:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 3px rgba(52, 152, 219, 0.3);
-}
-
-.input-with-btn {
-    display: flex;
-    align-items: center;
-}
-
-.icon-btn {
-    width: 26px;
-    height: 26px;
-    border: 1px solid #ccc;
-    background: #f0f0f0;
-    margin-left: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    color: #555;
-    border-radius: 2px;
-}
-
-.icon-btn:hover {
-    background: #e0e0e0;
-}
-
-/* Status Bar */
-.panel-statusbar {
-    height: 25px;
-    background: #f0f0f0;
-    border-top: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    font-size: 11px;
-    color: #555;
-}
-
-/* === MODAL === */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-overlay.hidden {
-    display: none;
-}
-
-/* MODIFIED: Width set to 50vw */
-.modal-window {
-    background: #fff;
-    width: 50vw;
-    min-width: 400px;
-    max-width: 900px;
-    border: 1px solid #336699;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-header {
-    background: linear-gradient(to bottom, #eef 0%, #ccc 100%);
-    padding: 5px 10px;
-    border-bottom: 1px solid #999;
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    font-size: 13px;
-    align-items: center;
-}
-
-.modal-toolbar {
-    background: #f5f5f5;
-    padding: 4px;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    justify-content: space-between;
-}
-
-.left-tools i,
-.right-tools i {
-    margin: 0 5px;
-    cursor: pointer;
-    color: #666;
-}
-
-.modal-content-table {
-    height: 200px;
-    overflow-y: auto;
-    background: white;
-}
-
-.std-table {
-    width: 100%;
-    border-collapse: collapse;
+    border: 1px solid #7f9db9;
+    padding: 2px 4px;
     font-size: 12px;
 }
 
-.std-table th {
-    background: #eee;
+/* === ANA PORTAL PENCERESİ (Alt Bölge) === */
+.ana-menu-penceresi {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 950px;
+    background: #fff;
+    border: 1px solid #777;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    z-index: 50;
+}
+
+.afis-alani {
+    width: 100%;
+    height: 120px;
+    background: #1c3b7f url('https://www.tkgm.gov.tr/sites/default/files/2024-05/afis_177_0.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.afis-overlay-text {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    color: gold;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.ikonlu-menu-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: #f0f0f0;
+}
+
+.menu-ikonu-buton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    color: #333;
+    gap: 4px;
+    position: relative;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.menu-ikonu-buton i {
+    font-size: 20px;
+    color: #000080;
+}
+
+.menu-ikonu-buton:hover {
+    filter: brightness(1.2);
+    background: #e2e2e2;
+}
+
+/* === ALT MENÜ DROPDOWN (YUKARI AÇILAN) === */
+.menu-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    min-width: 280px;
+    background: #fff;
+    border: 1px solid #005a9e;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    z-index: 200;
+    margin-bottom: 5px;
+    max-height: 500px;
+    /* Ekranın üstüne sığması için limit */
+    overflow-y: auto;
+    /* Uzun listelerde (Sorgulama vb.) scrollbar çalışsın */
+    overflow-x: visible;
+}
+
+/* Hiyerarşik menülerin (Veri Düzeltme vb.) sağa açılabilmesi için scroll'u aşması gerekir */
+/* Eğer menü içinde .submenu varsa scroll çakışmasını önlemek için overflow'u serbest bırak */
+.menu-popup:has(.submenu) {
+    overflow: visible !important;
+    max-height: none;
+}
+
+.menu-ikonu-buton.aktif .menu-popup {
+    display: flex;
+}
+
+.menu-popup-item {
+    padding: 6px 15px;
+    font-size: 13px;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
     text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* Alt menü için gerekli */
+}
+
+.menu-popup-item:hover {
+    background: #e8eff7;
+    color: #000;
+}
+
+/* Alt Menü (2. Seviye) - Yukarı Doğru Açılacak */
+.submenu {
+    position: absolute;
+    bottom: -1px;
+    /* Aşağıdan yukarı doğru hizala */
+    left: 100%;
+    min-width: 250px;
+    background: #fff;
+    border: 1px solid #005a9e;
+    box-shadow: 5px -5px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    z-index: 500;
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.menu-popup-item:hover>.submenu,
+.menu-popup-item.submenu-open>.submenu {
+    display: flex !important;
+    z-index: 1000;
+}
+
+.menu-popup-item i.fa-caret-right {
+    font-size: 10px;
+    color: #666;
+    margin-left: 10px;
+}
+
+.menu-popup-item.sep {
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 2px;
+}
+
+/* === ALT BİLGİ ÇUBUĞU (RESİM 10 TABLO YAPISI) === */
+.alt-bilgi-cubugu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    /* Sağ alt köşeye sabitle */
+    background: #e2e2e2;
+    border-top: 1px solid #999;
+    border-left: 1px solid #999;
+    /* Sol kenara çerçeve ekle */
+    display: flex;
+    align-items: stretch;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 10px;
+    height: 38px;
+    z-index: 1000;
+}
+
+.stat-group {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #999;
+    min-width: 60px;
+}
+
+.stat-header {
+    background: #003366;
+    /* Koyu TAKBİS Mavisi */
+    color: #fff;
+    padding: 2px 5px;
+    text-align: center;
+    font-size: 9px;
+    font-weight: bold;
+    border-bottom: 1px solid #fff;
+    white-space: nowrap;
+}
+
+.stat-sub-row {
+    display: flex;
+    flex: 1;
+}
+
+.stat-cell {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-right: 1px solid #ccc;
+    text-align: center;
+}
+
+.stat-cell:last-child {
+    border-right: none;
+}
+
+.stat-cell .label {
+    background: #005a9e;
+    /* Açık Mavi Şerit */
+    color: #fff;
+    padding: 1px 2px;
+    font-size: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.stat-cell .value {
+    background: #fff;
+    color: #005a9e;
+    font-weight: bold;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-group.large-group {
+    min-width: 120px;
+}
+
+.stat-icons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 10px;
+    background: #e2e2e2;
+}
+
+.stat-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.info-icon {
+    background: linear-gradient(to bottom, #f39c12, #e67e22);
+    border: 1px solid #d35400;
+}
+
+.user-icon {
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+    border: 1px solid #005a9e;
+}
+
+/* Pencere Özel Pozisyonlar */
+#pencere-kisi-sorgu {
+    top: 50px;
+    left: 100px;
+    width: 650px;
+    height: 400px;
+}
+
+/* === TABLO VE LİSTE STİLLERİ === */
+.complex-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+.complex-table th {
+    background: #e2e2e2;
+    color: #000080;
+    border: 1px solid #aaa;
+    padding: 4px;
+    text-align: left;
+}
+
+.complex-table td {
+    border: 1px solid #ccc;
+    padding: 3px 6px;
+    background: #fff;
+}
+
+.complex-table tr:hover td {
+    background: #fffbd6;
+}
