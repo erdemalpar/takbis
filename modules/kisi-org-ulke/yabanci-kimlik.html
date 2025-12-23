@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="module-body">
+    <!-- TAKBİS Özel Toolbar (TF0881) -->
+    <div class="panel-toolbar-classic">
+        <div class="t-group">
+            <button class="t-icon-btn" title="Kaydet"><i class="fa-solid fa-floppy-disk"
+                    style="color: #2e7d32;"></i></button>
+        </div>
+        <div class="t-sep"></div>
+        <div class="t-group">
+            <button class="t-icon-btn" title="Yürüt (Sorgula)"><i class="fa-solid fa-bolt"
+                    style="color: #fbc02d;"></i></button>
+            <button class="t-icon-btn" title="Temizle"><i class="fa-solid fa-eraser"
+                    style="color: #546e7a;"></i></button>
+            <button class="t-icon-btn" title="Sayfa Ekle"><i class="fa-solid fa-file-circle-plus"
+                    style="color: #1565c0;"></i></button>
+        </div>
+        <div class="t-sep"></div>
+        <div class="t-group">
+            <button class="t-icon-btn" title="Yazdır"><i class="fa-solid fa-print" style="color: #455a64;"></i></button>
+            <button class="t-icon-btn" title="Yardım"><i class="fa-solid fa-circle-question"
+                    style="color: #fbc02d;"></i></button>
+        </div>
+        <div class="t-group" style="margin-left: auto;">
+            <button class="t-icon-btn pencere-kapat-btn" title="Kapat"><i class="fa-solid fa-door-open"
+                    style="color: #c62828;"></i></button>
+        </div>
+    </div>
+
+    <!-- Sekmeler -->
+    <div class="panel-tabs-classic">
+        <div class="tab active" data-tab="arama-kriterleri">Form Arama Kriterleri</div>
+        <div class="tab" data-tab="arama-sonuc">Form Arama Sonuç</div>
+    </div>
+
+    <!-- İçerik Alanı -->
+    <div class="panel-content-classic">
+
+        <!-- Sekme 1: Arama Kriterleri -->
+        <div class="arama-kriterleri-content">
+            <div class="tf-accordion">
+                <div class="tf-acc-section" id="acc-yabanci-no">
+                    <div class="tf-acc-header">Yabancı Kimlik Numarası İle Arama</div>
+                    <div class="tf-acc-body hidden">
+                        <div class="tf-form-row">
+                            <label>Yabancı Kimlik No</label>
+                            <input type="text" class="tf-input" style="width: 200px;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tf-acc-section" id="acc-talep-no">
+                    <div class="tf-acc-header">Talep Sorgulama Numarası İle Arama</div>
+                    <div class="tf-acc-body hidden">
+                        <div class="tf-form-row">
+                            <label>Talep Sorgulama No</label>
+                            <input type="text" class="tf-input" style="width: 300px;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tf-acc-section" id="acc-kisi-bilgi">
+                    <div class="tf-acc-header">Kişi Bilgileri İle Arama</div>
+                    <div class="tf-acc-body hidden">
+                        <div class="tf-grid-3">
+                            <div class="tf-col">
+                                <div class="tf-form-row vertical"><label>Adı</label><input type="text" class="tf-input">
+                                </div>
+                                <div class="tf-form-row vertical"><label>Soyadı</label><input type="text"
+                                        class="tf-input"></div>
+                            </div>
+                            <div class="tf-col">
+                                <div class="tf-form-row vertical"><label>Baba Adı</label><input type="text"
+                                        class="tf-input"></div>
+                                <div class="tf-form-row vertical"><label>Ana Adı</label><input type="text"
+                                        class="tf-input"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tf-acc-section open" id="acc-genel-arama">
+                    <div class="tf-acc-header">Genel Arama</div>
+                    <div class="tf-acc-body">
+                        <div class="tf-col" style="gap: 12px;">
+                            <div class="tf-form-row vertical">
+                                <label>Kurum/Kurumlar</label>
+                                <div class="input-with-icon">
+                                    <input type="text" class="tf-input" style="width: 500px;">
+                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
+                                    <span style="color:red; margin-left:5px;">-</span>
+                                </div>
+                            </div>
+                            <div class="tf-form-row vertical">
+                                <label>Uyruk</label>
+                                <div class="input-with-icon">
+                                    <input type="text" class="tf-input" style="width: 500px;">
+                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
+                                    <span style="color:red; margin-left:5px;">-</span>
+                                </div>
+                            </div>
+                            <div class="tf-form-row vertical">
+                                <label>Cinsiyet</label>
+                                <div class="input-with-icon">
+                                    <input type="text" class="tf-input" style="width: 200px;">
+                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
+                                    <span style="color:red; margin-left:5px;">-</span>
+                                </div>
+                            </div>
+                            <div class="tf-form-row vertical">
+                                <label>Medeni Hal</label>
+                                <div class="input-with-icon">
+                                    <input type="text" class="tf-input" style="width: 200px;">
+                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
+                                    <span style="color:red; margin-left:5px;">-</span>
+                                </div>
+                            </div>
+                            <div class="tf-form-row vertical">
+                                <label>Yabancı Kimlik Numarası Talep Durumu</label>
+                                <div class="input-with-icon">
+                                    <input type="text" class="tf-input" style="width: 200px;">
+                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
+                                </div>
+                            </div>
+                            <div class="tf-form-row vertical">
+                                <label>İkamet Edilen İl/İller</label>
+                                <div class="input-with-icon">
+                                    <input type="text" class="tf-input" style="width: 500px;">
+                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
+                                    <span style="color:red; margin-left:5px;">-</span>
+                                </div>
+                            </div>
+                            <div class="tf-form-row">
+                                <input type="checkbox" id="chk-otomatik">
+                                <label for="chk-otomatik" style="font-size: 11px; margin-left: 5px;">Otomatik Sorgulama
+                                    Süresi Dolanlar</label>
+                            </div>
+                            <div class="tf-form-row" style="gap: 20px;">
+                                <div class="tf-form-row vertical">
+                                    <label>Kayıt Başlangıç Tarihi</label>
+                                    <input type="text" class="tf-input" style="width: 130px;">
+                                </div>
+                                <div class="tf-form-row vertical">
+                                    <label>Kayıt Bitiş Tarihi</label>
+                                    <div class="input-with-icon">
+                                        <input type="text" class="tf-input" style="width: 130px;">
+                                        <span style="color:red; margin-left:5px;">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sekme 2: Arama Sonuç (Başlangıçta Gizli) -->
+        <div class="arama-sonuc-content hidden">
+            <div class="sonuc-header-toolbar"
+                style="background:#e1e1e1; padding:2px; display:flex; gap:10px; border-bottom:1px solid #aaa;">
+                <i class="fa-solid fa-square" style="color:blue;"></i>
+                <i class="fa-solid fa-square" style="color:red;"></i>
+                <i class="fa-solid fa-square" style="color:lightgreen;"></i>
+                <i class="fa-solid fa-square" style="color:yellow;"></i>
+            </div>
+            <div style="flex: 1; overflow: auto; height: 250px;">
+                <table class="complex-table">
+                    <thead>
+                        <tr>
+                            <th>İl</th>
+                            <th>Kurum</th>
+                            <th>Yabancı Kimlik No</th>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>Baba Adı</th>
+                            <th>Anne Adı</th>
+                            <th>Doğum Tarihi</th>
+                            <th>Cinsiyet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #000080; color: #fff;">
+                            <td>ANKARA</td>
+                            <td>TAPU VE KADASTRO</td>
+                            <td>99654479812</td>
+                            <td>CHRISTIANE</td>
+                            <td>LALLIER</td>
+                            <td>JEAN LOUIS</td>
+                            <td>KIZI</td>
+                            <td>16/07/1947</td>
+                            <td>Kadın</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Detay Form Grid -->
+            <div class="tf-acc-body" style="background: #f0f8ff; border-top: 2px solid #005a9e; padding: 15px;">
+                <div class="tf-grid-3">
+                    <div class="tf-col">
+                        <div class="tf-form-row vertical"><label>Adı</label><input type="text" class="tf-input"
+                                value="CHRISTIANE"></div>
+                        <div class="tf-form-row vertical"><label>Soyadı</label><input type="text" class="tf-input"
+                                value="LALLIER"></div>
+                        <div class="tf-form-row vertical"><label>Baba Adı</label><input type="text" class="tf-input"
+                                value="JEAN LOUIS"></div>
+                        <div class="tf-form-row vertical"><label>Ana Adı</label><input type="text" class="tf-input"
+                                value="KIZI"></div>
+                    </div>
+                    <div class="tf-col">
+                        <div class="tf-form-row vertical"><label>Doğum Tarihi</label><input type="text" class="tf-input"
+                                value="16/07/1947"></div>
+                        <div class="tf-form-row vertical"><label>Doğum Yeri</label><input type="text" class="tf-input"
+                                value="Kanada"></div>
+                        <div class="tf-form-row vertical"><label>Doğum Uyruk</label><input type="text" class="tf-input"
+                                value="Kanada"></div>
+                        <div class="tf-form-row vertical"><label>Kişi Uyruk</label><input type="text" class="tf-input"
+                                value="Kanada"></div>
+                    </div>
+                    <div class="tf-col">
+                        <div class="tf-form-row vertical"><label>Cinsiyet</label><input type="text" class="tf-input"
+                                value="Kadın"></div>
+                        <div class="tf-form-row vertical"><label>Medeni Hal</label><input type="text" class="tf-input"
+                                value="Dul"></div>
+                        <div class="tf-form-row vertical"><label>İkamet Ettiği İl</label><input type="text"
+                                class="tf-input" value="NİĞDE"></div>
+                        <div class="tf-form-row vertical"><label>GIGM Referans No</label><input type="text"
+                                class="tf-input"></div>
+                    </div>
+                </div>
+                <div class="tf-form-row vertical" style="margin-top:10px;">
+                    <label>Açıklama</label>
+                    <textarea class="tf-input"
+                        style="height: 50px; font-size:11px;">TalepGuid Göç Net sisteminden dönmediğinden Tsup Sistemi tarafından oluşturulmuştur. Göç Net Sisteminden Talep Gui ile Sorgulamada kullanılmaz.</textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Alt Bilgi -->
+    <div class="tf-panel-status">
+        <div class="tf-status-item date">23/12/2025</div>
+        <div class="tf-status-item flex-1 text-center">Kimlik bilgisi ile kişi arama kriterleri</div>
+        <div class="tf-status-item" style="border-left:1px solid #ccc; padding-left:10px;">Kayıt : 1</div>
+    </div>
+
+    <script>
+        // Tab switching logic for this module
+        document.querySelectorAll('.panel-tabs-classic .tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+                document.querySelectorAll('.panel-tabs-classic .tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                if (target === 'arama-kriterleri') {
+                    document.querySelector('.arama-kriterleri-content').classList.remove('hidden');
+                    document.querySelector('.arama-sonuc-content').classList.add('hidden');
+                } else {
+                    document.querySelector('.arama-kriterleri-content').classList.add('hidden');
+                    document.querySelector('.arama-sonuc-content').classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

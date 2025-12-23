@@ -138,236 +138,38 @@
                         <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
                     </div>
                 </div>
+                <div class="pencere-icerik" id="pencere-kisi-sorgu-icerik">
+                    <!-- İçerik app.js tarafından dinamik olarak yüklenecek -->
+                </div>
+            </div>
+
+            <!-- Tüzel Kişi Sorgulama Penceresi (TF0215) -->
+            <div id="pencere-tuzel-sorgu" class="pencere hidden">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">TF0215 - Tüzel Kişi Sorgulama</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-regular fa-window-minimize"></i>
+                        <i class="fa-regular fa-window-maximize"></i>
+                        <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
+                    </div>
+                </div>
                 <div class="pencere-icerik">
-                    <!-- TAKBİS Özel Toolbar -->
-                    <div class="panel-toolbar-classic">
-                        <div class="t-group">
-                            <button class="t-icon-btn" title="Kaydet"><i class="fa-solid fa-floppy-disk"
-                                    style="color: #2e7d32;"></i></button>
-                        </div>
-                        <div class="t-sep"></div>
-                        <div class="t-group">
-                            <button class="t-icon-btn" title="İlk Kayıt"><i class="fa-solid fa-step-backward"
-                                    style="color: #1565c0;"></i></button>
-                            <button class="t-icon-btn" title="Önceki"><i class="fa-solid fa-caret-left"
-                                    style="color: #1565c0;"></i></button>
-                            <button class="t-icon-btn" title="Sonraki"><i class="fa-solid fa-caret-right"
-                                    style="color: #1565c0;"></i></button>
-                            <button class="t-icon-btn" title="Son Kayıt"><i class="fa-solid fa-step-forward"
-                                    style="color: #1565c0;"></i></button>
-                        </div>
-                        <div class="t-sep"></div>
-                        <div class="t-group">
-                            <button class="t-icon-btn btn-yurut" title="Yürüt (Sorgula)"><i class="fa-solid fa-bolt"
-                                    style="color: #fbc02d;"></i></button>
-                            <button class="t-icon-btn" title="Temizle"><i class="fa-solid fa-eraser"
-                                    style="color: #546e7a;"></i></button>
-                        </div>
-                        <div class="t-sep"></div>
-                        <div class="t-group">
-                            <button class="t-icon-btn" title="Yazdır"><i class="fa-solid fa-print"
-                                    style="color: #455a64;"></i></button>
-                            <button class="t-icon-btn" title="Yardım"><i class="fa-solid fa-circle-question"
-                                    style="color: #fbc02d;"></i></button>
-                        </div>
-                        <div class="toolbar-right">
-                            <button class="t-icon-btn pencere-kapat-btn" title="Kapat"><i class="fa-solid fa-door-open"
-                                    style="color: #c62828;"></i></button>
-                        </div>
+                    <!-- İçerik asenkron yüklenecek -->
+                </div>
+            </div>
+
+            <!-- Yabancı Kimlik Sorgulama Penceresi (TF0881) -->
+            <div id="pencere-yabanci-kimlik" class="pencere hidden">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">TF0881 - Yabancı Kişi Sorgu ve Kayıt İşlemleri</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-regular fa-window-minimize"></i>
+                        <i class="fa-regular fa-window-maximize"></i>
+                        <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
                     </div>
-
-                    <!-- Sekmeler -->
-                    <div class="panel-tabs-classic">
-                        <div class="tab active" data-tab="kisi-arama-kriterleri">Kişi Arama Kriterleri</div>
-                        <div class="tab" data-tab="kisi-listesi">Kişi Listesi</div>
-                    </div>
-
-                    <!-- İçerik Alanı -->
-                    <div class="panel-content-classic">
-
-                        <!-- Akordiyon Yapısı -->
-                        <div class="tf-accordion">
-                            <div class="tf-acc-section" id="acc-hizli-arama">
-                                <div class="tf-acc-header">Hızlı Arama</div>
-                                <div class="tf-acc-body">
-                                    <div class="tf-form-row">
-                                        <label>Kişi Sistem No</label>
-                                        <div class="input-with-icon">
-                                            <input type="text" class="tf-input" id="inp-kisi-sistem-no">
-                                            <i class="fa-solid fa-magnifying-glass-chart tf-select-icon"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-acc-section" id="acc-tanitim-no">
-                                <div class="tf-acc-header">Tanıtım No Bilgisi ile Arama</div>
-                                <div class="tf-acc-body hidden">
-                                    <div class="tf-form-row">
-                                        <label>Tanıtım No Tip</label>
-                                        <div class="input-with-icon">
-                                            <input type="text" class="tf-input">
-                                            <i class="fa-solid fa-list-check tf-select-icon"></i>
-                                        </div>
-                                    </div>
-                                    <div class="tf-form-row">
-                                        <label>Tanıtım No</label>
-                                        <input type="text" class="tf-input">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-acc-section" id="acc-kimlik-bilgi">
-                                <div class="tf-acc-header">Kimlik Bilgisi ile Arama</div>
-                                <div class="tf-acc-body hidden">
-                                    <div class="tf-form-row">
-                                        <label>Seri No</label>
-                                        <input type="text" class="tf-input">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-acc-section open" id="acc-detayli-arama">
-                                <div class="tf-acc-header">Detaylı Arama</div>
-                                <div class="tf-acc-body">
-                                    <div class="tf-grid-3">
-                                        <!-- Sütun 1 -->
-                                        <div class="tf-col">
-                                            <div class="tf-form-row vertical">
-                                                <label>Soyadı</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-question-circle tf-help-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Adı</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-question-circle tf-help-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Baba Adı</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-question-circle tf-help-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Ana Adı</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-question-circle tf-help-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Doğum Yeri</label>
-                                                <input type="text" class="tf-input">
-                                            </div>
-                                        </div>
-                                        <!-- Sütun 2 -->
-                                        <div class="tf-col">
-                                            <div class="tf-form-row vertical">
-                                                <label>Doğum Tarihi Aralığı</label>
-                                                <div class="tf-input-range">
-                                                    <input type="text" class="tf-input">
-                                                    <span>-</span>
-                                                    <input type="text" class="tf-input">
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>İl</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>İlçe</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Mahalle - Köy</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Cilt No.</label>
-                                                <input type="text" class="tf-input">
-                                            </div>
-                                        </div>
-                                        <!-- Sütun 3 -->
-                                        <div class="tf-col">
-                                            <div class="tf-input-group-inline">
-                                                <div class="tf-form-row vertical flex-1">
-                                                    <label>Aile Sıra No.</label>
-                                                    <input type="text" class="tf-input">
-                                                </div>
-                                                <div class="tf-form-row vertical flex-1">
-                                                    <label>Sıra No.</label>
-                                                    <input type="text" class="tf-input">
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Uyruk</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Cinsiyet</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Vatandaşlık Tip</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tf-form-row vertical">
-                                                <label>Engel Tip</label>
-                                                <div class="input-with-icon">
-                                                    <input type="text" class="tf-input">
-                                                    <i class="fa-solid fa-list-ul tf-select-icon"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-acc-section" id="acc-islem-icinde">
-                                <div class="tf-acc-header">İşlem İçinde Arama</div>
-                                <div class="tf-acc-body hidden">
-                                    <div class="tf-form-row">
-                                        <label>İşlem Sistem No.</label>
-                                        <div class="input-with-icon">
-                                            <input type="text" class="tf-input">
-                                            <i class="fa-solid fa-list-check tf-select-icon"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Alt Bilgi (Status) -->
-                    <div class="tf-panel-status">
-                        <div class="tf-status-item date">24/12/2025</div>
-                        <div class="tf-status-item flex-1 text-center">İlk Kayıt</div>
-                    </div>
+                </div>
+                <div class="pencere-icerik">
+                    <!-- İçerik asenkron yüklenecek -->
                 </div>
             </div>
 
@@ -421,9 +223,12 @@
                         <i class="fa-solid fa-users"></i>
                         <span>Kişi/Org./Ülke</span>
                         <div class="menu-popup">
-                            <div class="menu-popup-item" data-open-window="pencere-kisi-sorgu">1.1. Kişi Bilgileri -
-                                Kişi Sorgulama</div>
-                            <div class="menu-popup-item">1.2. Tüzel Kişi Bilgileri</div>
+                            <div class="menu-popup-item" data-open-window="pencere-kisi-sorgu"
+                                data-module-url="modules/kisi-org-ulke/kisi-sorgulama.html">1.1. Kişi Bilgileri - Kişi
+                                Sorgulama</div>
+                            <div class="menu-popup-item" data-open-window="pencere-tuzel-sorgu"
+                                data-module-url="modules/kisi-org-ulke/tuzel-kisi-sorgulama.html">1.2. Tüzel Kişi
+                                Bilgileri</div>
                             <div class="menu-popup-item">1.3. Yabancı Kimlik</div>
                             <div class="menu-popup-item">1.4. Organizasyon Tanımları</div>
                             <div class="menu-popup-item">1.5. Ülke Tanımları</div>
