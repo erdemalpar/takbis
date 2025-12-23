@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+
+<body class="module-body">
+    <style>
+        /* RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #eaeff5;
+            font-family: Tahoma, 'Segoe UI', sans-serif;
+            font-size: 11px;
+        }
+
+        .tf-window {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- TOOLBAR --- */
+        .tf-toolbar {
+            height: 28px;
+            background: #f0f0f0;
+            border-bottom: 1px solid #a0a0a0;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            gap: 2px;
+        }
+
+        .tf-tool-sep {
+            width: 1px;
+            height: 16px;
+            background: #a0a0a0;
+            margin: 0 3px;
+        }
+
+        .tf-btn {
+            width: 24px;
+            height: 22px;
+            border: 1px solid transparent;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+        }
+
+        .tf-btn:hover {
+            border: 1px solid #70c0e7;
+            background: #e5f1fb;
+        }
+
+        .tf-btn img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .tf-btn i {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* --- UPPER PANEL (TABLE) --- */
+        .tf-upper {
+            flex: 1;
+            background: #fff;
+            border-bottom: 3px solid #b0c4de;
+            overflow: auto;
+            position: relative;
+        }
+
+        .tf-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            font-size: 11px;
+        }
+
+        .tf-table th {
+            background: #d0d7e6;
+            /* Mavi-Gri ton */
+            color: #000;
+            border: 1px solid #a0a0a0;
+            padding: 2px 4px;
+            font-weight: bold;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            height: 22px;
+            white-space: nowrap;
+            /* Resimdeki renkli kutucuklar için gradient efekti */
+            background: linear-gradient(to bottom, #eff3f8 0%, #d0d7e6 100%);
+        }
+
+        .tf-table td {
+            border: 1px solid #d0d0d0;
+            padding: 2px 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 20px;
+            color: #000;
+        }
+
+        .tf-table tr:nth-child(even) {
+            background: #fdfdfd;
+        }
+
+        /* Satır Renkleri (Resimden analiz) */
+        .row-orange {
+            background-color: #ff8000 !important;
+            color: #fff;
+        }
+
+        /* Turuncu satır */
+        .row-orange td {
+            border-color: #d66b00;
+        }
+
+        .row-dark-blue {
+            background-color: #000080 !important;
+            color: #fff;
+        }
+
+        /* Seçili koyu lacivert */
+        .row-dark-blue td {
+            border-color: #000060;
+        }
+
+        /* Satır başı oku */
+        .row-indicator {
+            width: 15px;
+            background: #e0e0e0;
+            text-align: center;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .row-dark-blue .row-indicator {
+            background: #000080;
+            color: #fff;
+        }
+
+        .row-dark-blue .row-indicator::after {
+            content: '▶';
+            font-size: 8px;
+        }
+
+        /* --- LOWER PANEL (FORM) --- */
+        .tf-lower {
+            height: 380px;
+            /* Sabit yükseklik, orana göre */
+            background: #e6eef8;
+            /* Açık mavi zemin */
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-top: 1px solid #fff;
+            overflow-y: auto;
+        }
+
+        .tf-form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .tf-field {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .tf-field label {
+            color: #003399;
+            font-size: 11px;
+            margin-left: 1px;
+        }
+
+        .tf-input {
+            border: 1px solid #7f9db9;
+            height: 21px;
+            padding: 2px 4px;
+            font-size: 11px;
+            font-family: Tahoma;
+        }
+
+        .tf-input:focus {
+            outline: 1px dotted #000;
+        }
+
+        .tf-input.bg-blue {
+            background-color: #e6eef8;
+            /* Form zeminiyle aynı input */
+            border: 1px solid #7f9db9;
+        }
+
+        .tf-input.filled {
+            background-color: #fff;
+        }
+
+        .tf-input-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .tf-input-group .tf-input {
+            flex: 1;
+        }
+
+        .tf-icon-btn {
+            width: 20px;
+            height: 21px;
+            background: #f0f0f0;
+            border: 1px solid #7f9db9;
+            border-left: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Sağ taraftaki Checklist Kutuları */
+        .tf-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border-left: 1px solid #ccc;
+            padding-left: 10px;
+        }
+
+        .tf-check-box {
+            border: 1px solid #3366cc;
+            /* Mavi çerçeve */
+            background: transparent;
+            padding: 2px 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: 220px;
+            cursor: pointer;
+        }
+
+        .tf-check-box span {
+            color: #000;
+        }
+
+        /* Açıklama Alanı */
+        .tf-textarea {
+            border: 1px solid #7f9db9;
+            width: 100%;
+            height: 60px;
+            padding: 4px;
+            font-family: Tahoma;
+            font-size: 11px;
+            resize: none;
+        }
+
+        /* En Alttaki Mavi Şerit (Zemin Tanım) */
+        .tf-sub-panel {
+            margin-top: auto;
+            border: 1px solid #99bbe8;
+            background: #dceafe;
+            margin-bottom: 2px;
+        }
+
+        .tf-sub-header {
+            background: linear-gradient(to right, #99bbe8 0%, #dceafe 100%);
+            padding: 3px 6px;
+            font-weight: bold;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-bottom: 1px solid #99bbe8;
+        }
+
+        /* Status Bar */
+        .tf-statusbar {
+            height: 22px;
+            background: #f0f0f0;
+            border-top: 1px solid #a0a0a0;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            color: #000;
+        }
+
+        .tf-stat-item {
+            border-right: 1px solid #ccc;
+            padding: 0 8px;
+            height: 16px;
+            line-height: 16px;
+        }
+
+        /* Custom Icons Match */
+        .icon-lightning {
+            color: #ff9900;
+        }
+
+        .icon-save {
+            color: #008000;
+        }
+
+        .icon-delete {
+            color: #ff0000;
+        }
+
+        .icon-print {
+            color: #ff00ff;
+        }
+
+        /* Magenta yazıcı */
+        .icon-help {
+            color: #ffd700;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        /* Mernis Butonu */
+        .tf-btn-mernis {
+            border: 1px solid #3366cc;
+            background: #e6eef8;
+            padding: 2px 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+    <div class="tf-window">
+
+        <!-- TOOLBAR -->
+        <div class="tf-toolbar">
+            <button class="tf-btn" title="Çıkış"><i class="fa-solid fa-arrow-right-from-bracket"
+                    style="color:orange;"></i></button>
+            <div class="tf-tool-sep"></div>
+
+            <button class="tf-btn" title="Liste"><i class="fa-solid fa-table-list" style="color:#444;"></i></button>
+            <button class="tf-btn" title="İlk"><i class="fa-solid fa-backward-step"></i></button>
+            <button class="tf-btn" title="Önceki"><i class="fa-solid fa-caret-left"></i></button>
+            <button class="tf-btn" title="Sonraki"><i class="fa-solid fa-caret-right"></i></button>
+            <button class="tf-btn" title="Son"><i class="fa-solid fa-forward-step"></i></button>
+
+            <div class="tf-tool-sep"></div>
+            <button class="tf-btn" title="Yeni Kayıt"><img src="https://img.icons8.com/color/48/add-file.png"
+                    style="width:16px;"></button>
+            <button class="tf-btn" title="Değiştir"><img src="https://img.icons8.com/color/48/edit-file.png"
+                    style="width:16px;"></button>
+            <button class="tf-btn" title="Kaydet"><i class="fa-solid fa-floppy-disk icon-save"></i></button>
+            <button class="tf-btn" title="İptal"><i class="fa-solid fa-rotate-left"></i></button>
+
+            <div class="tf-tool-sep"></div>
+            <button class="tf-btn" title="Sil"><i class="fa-solid fa-xmark icon-delete"
+                    style="font-weight:900; font-size:16px;"></i></button>
+            <button class="tf-btn" title="Sorgula"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="tf-btn" title="Çalıştır"><i class="fa-solid fa-bolt icon-lightning"></i></button>
+
+            <!-- Resimdeki sağ taraftaki renkli ikonlar -->
+            <div style="flex:1;"></div>
+            <button class="tf-btn"><i class="fa-solid fa-print icon-print"></i></button>
+            <button class="tf-btn"><i class="fa-solid fa-question icon-help"></i></button>
+        </div>
+
+        <!-- TABLE -->
+        <div class="tf-upper">
+            <table class="tf-table" id="basvuru-table">
+                <colgroup>
+                    <col style="width: 20px;"> <!-- Indicator -->
+                    <col style="width: 40px;"> <!-- Yıl -->
+                    <col style="width: 60px;"> <!-- Sıra No -->
+                    <col style="width: 110px;"> <!-- Başvuru Trh -->
+                    <col style="width: 180px;"> <!-- Ad Soyad -->
+                    <col style="width: 100px;"> <!-- Tel -->
+                    <col style="width: 180px;"> <!-- Adres -->
+                    <col style="width: 250px;"> <!-- Taşınmaz -->
+                    <col style="width: 200px;"> <!-- İşlem -->
+                    <col style="width: 100px;"> <!-- Hazırlayan -->
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Yıl</th>
+                        <th>Sıra No.</th>
+                        <th>Başvuru Tarihi</th>
+                        <th>Başvuran Adı-Soyadı</th>
+                        <th>Başvuran Telefonu</th>
+                        <th>Başvuran Adresi</th>
+                        <th>Taşınmaz Mal (Mahalle-Ada-Parsel)</th>
+                        <th>İşlem Tanımı</th>
+                        <th>Hazırlayan</th>
+                    </tr>
+                </thead>
+                <tbody id="basvuru-tbody">
+                    <!-- JS ile doldurulacak -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FORM (LOWER PANEL) -->
+        <div class="tf-lower">
+            <div style="display: flex; gap: 20px;">
+                <!-- SOL SÜTUN -->
+                <div style="flex: 2; display: flex; flex-direction: column; gap: 5px;">
+                    <div style="display: flex; gap: 10px;">
+                        <div class="tf-field" style="width: 50px;">
+                            <label>Yıl</label>
+                            <input type="text" class="tf-input filled" id="inp-yil"
+                                style="background:#eef; border:1px solid #799;">
+                        </div>
+                        <div class="tf-field" style="width: 80px;">
+                            <label>Sıra No.</label>
+                            <input type="text" class="tf-input filled" id="inp-sira-no">
+                        </div>
+                        <div class="tf-field" style="flex: 1;">
+                            <label>İşlem Tanımı</label>
+                            <input type="text" class="tf-input filled" id="inp-islem-tanimi">
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px;">
+                        <div class="tf-field" style="width: 140px;">
+                            <label>Başvuru Tarihi - Saati</label>
+                            <input type="text" class="tf-input" id="inp-tarih" style="background:#ddd;">
+                        </div>
+                        <div class="tf-field" style="width: 100px;">
+                            <label>Ülke Telefon Kodu</label>
+                            <input type="text" class="tf-input filled" id="inp-ulke-kod">
+                        </div>
+                        <div class="tf-field" style="width: 120px;">
+                            <label>Başvuran Telefonu</label>
+                            <input type="text" class="tf-input filled" id="inp-telefon">
+                            <span style="font-size:9px; color:#555; text-align:right;">Örn:5XX4567890</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px;">
+                        <div class="tf-field" style="width: 140px;">
+                            <label>Başvuran T.C.Kimlik</label>
+                            <div class="tf-input-group">
+                                <input type="text" class="tf-input filled" id="inp-tc">
+                                <i class="fa-solid fa-bolt icon-lightning" style="margin-left:2px;"></i>
+                            </div>
+                        </div>
+                        <div class="tf-field" style="width: 100px;">
+                            <label>Sıramatik Sistem No</label>
+                            <div class="tf-input-group">
+                                <input type="text" class="tf-input filled" id="inp-siramatik">
+                                <i class="fa-solid fa-microchip" style="margin-left:2px; color:#008080;"></i>
+                            </div>
+                        </div>
+                        <div class="tf-field" style="flex: 1;">
+                            <label>Diğer Taraf Ülke Kodu - Telefonu</label>
+                            <div style="display:flex; gap:5px;">
+                                <input type="text" class="tf-input filled" style="width:60px;">
+                                <input type="text" class="tf-input filled" style="flex:1;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tf-field">
+                        <label>Başvuran Adı Soyadı</label>
+                        <input type="text" class="tf-input filled" id="inp-ad-soyad"
+                            style="background:#eef; font-weight:bold;">
+                    </div>
+
+                    <div class="tf-field">
+                        <label>Başvuran Adresi</label>
+                        <input type="text" class="tf-input filled" id="inp-adres">
+                    </div>
+
+                    <div style="display: flex; gap: 15px; margin-top: 5px;">
+                        <button class="tf-check-box" style="width: auto;">
+                            <input type="checkbox" id="chk-eksik"> <span>Eksik/Hatalı Bilgi/Belge Vardır</span>
+                        </button>
+                        <button class="tf-check-box" style="width: auto;">
+                            <input type="checkbox" id="chk-yazisma"> <span>Resmi Yazışma Yapılmıştır</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ORTA SÜTUN (PERSONEL) -->
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                    <div class="tf-field">
+                        <label>İşlemi Hazırlayan</label>
+                        <div class="tf-input-group">
+                            <input type="text" class="tf-input filled" id="inp-hazirlayan">
+                            <div class="tf-icon-btn"><i class="fa-solid fa-ellipsis"></i></div>
+                        </div>
+                    </div>
+                    <div class="tf-field">
+                        <label>Ön İncelemeyi Yapan</label>
+                        <div class="tf-input-group">
+                            <input type="text" class="tf-input filled" id="inp-on-inceleme">
+                            <div class="tf-icon-btn"><i class="fa-solid fa-ellipsis"></i></div>
+                        </div>
+                    </div>
+                    <div class="tf-field">
+                        <label>İşlemi Kontrol Eden</label>
+                        <div class="tf-input-group">
+                            <input type="text" class="tf-input filled" id="inp-kontrol">
+                            <div class="tf-icon-btn"><i class="fa-solid fa-ellipsis"></i></div>
+                        </div>
+                    </div>
+                    <div class="tf-field">
+                        <label>İşlemi Onaylayan</label>
+                        <div class="tf-input-group">
+                            <input type="text" class="tf-input filled" id="inp-onaylayan">
+                            <div class="tf-icon-btn"><i class="fa-solid fa-ellipsis"></i></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:auto;">
+                        <button class="tf-btn-mernis">
+                            <i class="fa-solid fa-bolt icon-lightning"></i>
+                            Mernistekinden Farklı Bir Adres Girilecektir
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SAĞ SÜTUN (CHECKLIST ve AÇIKLAMA) -->
+                <div style="width: 250px; display: flex; flex-direction: column; gap: 5px;">
+                    <button class="tf-check-box">
+                        <input type="checkbox" id="chk-yetki"> <span>Yetki Talebi İle Yapılacak Başvurudur</span>
+                    </button>
+                    <button class="tf-check-box">
+                        <input type="checkbox" id="chk-farkli"> <span>Farklı Müdürlükte Akit Başvurusu</span>
+                    </button>
+                    <button class="tf-check-box">
+                        <input type="checkbox" id="chk-emlakci"> <span>Emlakçı / Lisanslı Aracı Başvurusu</span>
+                    </button>
+
+                    <div class="tf-field" style="flex:1;">
+                        <div style="display:flex; justify-content:space-between;">
+                            <label>Açıklama</label>
+                            <span style="color:#ccc; font-size:9px;">WEB BASVURU</span>
+                        </div>
+                        <textarea class="tf-textarea" id="inp-aciklama"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZEMİN TANIM -->
+            <div class="tf-sub-panel">
+                <div class="tf-sub-header">
+                    <span>Başvuruya Ait Taşınmaz Mal (ZeminTanım)</span>
+                </div>
+                <div style="height: 40px; background: #dceafe; padding: 5px; font-weight:bold;"
+                    id="zemin-tanim-content">
+                    <!-- İçerik JS ile dolacak -->
+                </div>
+            </div>
+        </div>
+
+        <!-- STATUS BAR -->
+        <div class="tf-statusbar">
+            <div class="tf-stat-item" id="status-date">29/11/2023</div>
+            <div class="tf-stat-item">Liste</div>
+            <div class="tf-stat-item" id="status-count">Kayıt : 0</div>
+            <div style="flex:1;"></div>
+            <div class="tf-stat-item">0</div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            // Veri Yükleme ve Render İşlemi
+            const tbody = document.getElementById('basvuru-tbody');
+
+            function renderTable() {
+                if (typeof basvuruVeritabani === 'undefined') {
+                    tbody.innerHTML = '<tr><td colspan="10">Veritabanı yüklenemedi!</td></tr>';
+                    return;
+                }
+
+                const veriler = basvuruVeritabani.tumBasvurulariGetir();
+                document.getElementById('status-count').innerText = 'Kayıt : ' + veriler.length;
+
+                let html = '';
+                veriler.forEach(b => {
+                    let rowClass = '';
+                    if (b.durum === 'orange') rowClass = 'row-orange';
+                    if (b.durum === 'dark-blue') rowClass = 'row-dark-blue';
+
+                    // Tabloda gösterilecek kısa metinler
+                    const kisaTasinmaz = b.tasinmaz.length > 30 ? b.tasinmaz.substring(0, 30) + '...' : b.tasinmaz;
+                    const kisaIslem = b.islem_tanimi.length > 25 ? b.islem_tanimi.substring(0, 25) + '...' : b.islem_tanimi;
+
+                    html += `<tr class="${rowClass}" onclick="selectRow(this, ${b.sira_no})">
+                        <td class="row-indicator"></td>
+                        <td>${b.yil}</td>
+                        <td>${b.sira_no}</td>
+                        <td>${b.basvuru_tarihi.substring(0, 16)}</td>
+                        <td>${b.basvuran_adi}</td>
+                        <td>${b.basvuran_telefon}</td>
+                        <td>${b.basvuran_adres}</td>
+                        <td>${b.tasinmaz}</td>
+                        <td>${kisaIslem}</td>
+                        <td>${b.hazirlayan}</td>
+                    </tr>`;
+                });
+                tbody.innerHTML = html;
+            }
+
+            // Global Row Seçim Fonksiyonu (window objesine ekleyelim ki HTML onclick erişsin)
+            window.selectRow = function (row, siraNo) {
+                // Görsel seçim
+                document.querySelectorAll('#basvuru-tbody tr').forEach(r => {
+                    r.classList.remove('row-dark-blue');
+                    // Turuncu satırları koru, sadece laciverti kaldır
+                    // Ancak orijinal tasarımda seçili satır her zaman lacivert olur
+                });
+                row.classList.add('row-dark-blue');
+
+                // Formu Doldur
+                fillForm(siraNo);
+            };
+
+            function fillForm(siraNo) {
+                const kayit = basvuruVeritabani.basvuruAra(siraNo);
+                if (!kayit) return;
+
+                document.getElementById('inp-yil').value = kayit.yil;
+                document.getElementById('inp-sira-no').value = kayit.sira_no;
+                document.getElementById('inp-islem-tanimi').value = kayit.islem_tanimi;
+                document.getElementById('inp-tarih').value = kayit.basvuru_tarihi;
+                document.getElementById('inp-telefon').value = kayit.basvuran_telefon;
+                document.getElementById('inp-tc').value = kayit.tc_kimlik || '';
+                document.getElementById('inp-ad-soyad').value = kayit.basvuran_adi;
+                document.getElementById('inp-adres').value = kayit.basvuran_adres;
+                document.getElementById('inp-hazirlayan').value = kayit.hazirlayan;
+                document.getElementById('inp-aciklama').value = kayit.aciklama || '';
+
+                // Zemin Tanım
+                const zeminArea = document.getElementById('zemin-tanim-content');
+                if (kayit.zemin_tanim && kayit.zemin_tanim.length > 0) {
+                    zeminArea.innerHTML = `<i class="fa-solid fa-square-plus" style="color:blue; margin-right:5px;"></i>` + kayit.zemin_tanim[0] +
+                        `<button style="float:right; border:1px solid #999;" class="tf-btn"><i class="fa-solid fa-bolt icon-lightning"></i></button>`;
+                } else {
+                    zeminArea.innerHTML = `<button style="float:right; border:1px solid #999;" class="tf-btn"><i class="fa-solid fa-bolt icon-lightning"></i></button>`;
+                }
+            }
+
+            // Sayfa yüklendiğinde çalıştır
+            renderTable();
+
+            // Varsayılan olarak lacivert satırı (örnek: 191189) seç
+            setTimeout(() => {
+                const defaultRow = document.querySelector('tr[onclick*="191189"]');
+                if (defaultRow) {
+                    defaultRow.click();
+                }
+            }, 100);
+
+        })();
+    </script>
+</body>
+
+</html>

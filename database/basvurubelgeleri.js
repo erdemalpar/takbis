@@ -1,0 +1,231 @@
+// TAKBİS - Başvuru Belgeleri Veritabanı
+// TF0106 Ekran Görüntüsüne Göre Hazırlanmış Veri Seti
+
+const basvuruVeritabani = {
+    basvurular: [
+        {
+            yil: 2023,
+            sira_no: 191156,
+            basvuru_tarihi: '29/11/2023 09:44:00',
+            basvuran_adi: 'ANKARA BÜYÜKŞEHİR BEL.',
+            basvuran_telefon: '',
+            basvuran_adres: '',
+            tasinmaz: '',
+            islem_tanimi: 'BEYAN-KESİNLEŞMEMİŞ KAMULAŞTIRMA',
+            hazirlayan: 'Umut ÖZ...',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191157,
+            basvuru_tarihi: '29/11/2023 09:46:00',
+            basvuran_adi: 'Bornova Tapu Müdürlüğü',
+            basvuran_telefon: '',
+            basvuran_adres: 'AT (KARATAŞ Mah. 134 Ada 40 Parsel)',
+            tasinmaz: 'AT (KARATAŞ Mah. 13 Ada 40 Parsel)',
+            islem_tanimi: 'YETKİ ALANI DIŞINDAKİ TAPU İŞLEMİ',
+            hazirlayan: 'İkinci Bölge...',
+            tc_kimlik: '',
+            durum: 'orange', // Turuncu satır
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191158,
+            basvuru_tarihi: '29/11/2023 09:46:00',
+            basvuran_adi: 'ANKARA GAYRİMENKUL SATIŞ İCRA DAİRESİ',
+            basvuran_telefon: '',
+            basvuran_adres: '',
+            tasinmaz: '',
+            islem_tanimi: 'SATIŞA ARZ ŞERHİ TERKİNİ',
+            hazirlayan: 'Umut ÖZ...',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191168,
+            basvuru_tarihi: '29/11/2023 09:52:00',
+            basvuran_adi: 'ANKARA 1. İCRA DAİRESİ NİN 2023/1234 ESAS',
+            basvuran_telefon: '',
+            basvuran_adres: '',
+            tasinmaz: '',
+            islem_tanimi: 'HACİZ TERKİNİ',
+            hazirlayan: 'Umut ÖZ...',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191170,
+            basvuru_tarihi: '29/11/2023 09:53:00',
+            basvuran_adi: 'ANKARA 10.SULH HUKUK MAHKEMESİ',
+            basvuran_telefon: '',
+            basvuran_adres: '',
+            tasinmaz: '',
+            islem_tanimi: 'TEREKE TEDBİR ŞERHİ TERKİNİ',
+            hazirlayan: 'Umut ÖZ...',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191171,
+            basvuru_tarihi: '29/11/2023 09:54:00',
+            basvuran_adi: '(TÜRKİYE HALK BANKASI A.Ş.)',
+            basvuran_telefon: '0(532)-6121890',
+            basvuran_adres: 'YÜCESAN A ŞNENEH...',
+            tasinmaz: 'ANKARA/ÇANKAYA KAZIM ÖZALP Mah. 54...',
+            islem_tanimi: 'İpotek Terkini',
+            hazirlayan: 'Birinci Bölge...',
+            tc_kimlik: '',
+            durum: 'orange', // Resimdeki 2. turuncu satır
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191173,
+            basvuru_tarihi: '29/11/2023 09:55:00',
+            basvuran_adi: 'ANKARA 3.SULH HUKUK MAHKEMESİ',
+            basvuran_telefon: '',
+            basvuran_adres: '',
+            tasinmaz: '',
+            islem_tanimi: 'VESAYET TEDBİR ŞERHİ',
+            hazirlayan: 'Umut ÖZ...',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191177,
+            basvuru_tarihi: '29/11/2023 10:05:00',
+            basvuran_adi: 'MUSTAFA BÜLENT FELEK',
+            basvuran_telefon: '0(532)-3116971',
+            basvuran_adres: '',
+            tasinmaz: 'ANKARA/ÇANKAYA ÇAY YOLU-1 Mah. 421...',
+            islem_tanimi: 'Vatandas Portalı/Tapu İşlemleri/SATIŞ',
+            hazirlayan: 'tkweb tkweb',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191183,
+            basvuru_tarihi: '29/11/2023 10:07:00',
+            basvuran_adi: 'Ankara Büyükşehir Belediye Başkanlığı',
+            basvuran_telefon: '0(533)-9670119',
+            basvuran_adres: '',
+            tasinmaz: 'ANKARA/ÇANKAYA KEKLİK PINARI Mah. 2...',
+            islem_tanimi: 'Kurum Portalı/Tapu İşlemleri/SATIŞ',
+            hazirlayan: 'tkweb tkweb',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191187,
+            basvuru_tarihi: '29/11/2023 10:08:00',
+            basvuran_adi: 'YAKUP KAPLAN',
+            basvuran_telefon: '0(505)-0116350',
+            basvuran_adres: '',
+            tasinmaz: 'ANKARA/ÇANKAYA İMRAHOR-3 Mah. 262...',
+            islem_tanimi: 'Vatandas Portalı/Tapu İşlemleri/SATIŞ',
+            hazirlayan: 'tkweb tkweb',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191188,
+            basvuru_tarihi: '29/11/2023 10:08:00',
+            basvuran_adi: 'CEVRİYE KAYA',
+            basvuran_telefon: '0(532)-6715756',
+            basvuran_adres: '',
+            tasinmaz: 'ANKARA/ÇANKAYA YENİŞEHİR Mah. 105...',
+            islem_tanimi: 'Vatandas Portalı/Tapu İşlemleri/SATIŞ',
+            hazirlayan: 'tkweb tkweb',
+            tc_kimlik: '',
+            durum: 'normal',
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: '',
+            zemin_tanim: []
+        },
+        {
+            yil: 2023,
+            sira_no: 191189,
+            basvuru_tarihi: '29/11/2023 10:08:42',
+            basvuran_adi: 'KÜBRA ATEŞ YİĞİT',
+            basvuran_telefon: '0(530)-1613123',
+            basvuran_adres: '',
+            tasinmaz: '',
+            islem_tanimi: 'Vatandas Portalı/Tapu İşlemleri/RAPOR VE BELGE',
+            hazirlayan: 'tkweb tkweb',
+            tc_kimlik: '30349293856',
+            on_inceleme: '',
+            kontrol_eden: '',
+            onaylayan: '',
+            durum: 'dark-blue', // Seçili lacivert satır
+            ulke_tel_kod: '',
+            diger_taraf_ulke: '',
+            aciklama: 'Avukat sıfatı ile haciz ve şerh sorgulama',
+            checklist: {
+                yetki_talebi: false,
+                farkli_mudurluk: false,
+                emlakci: false,
+                eksik_bilgi: false,
+                resmi_yazisma: false
+            },
+            zemin_tanim: [
+                'ANKARA/YENİMAHALLE SUSUZ MAH. 62574 Ada 1 Parsel A Blok 11 nolu Bağ.Bölüm'
+            ]
+        }
+    ],
+
+    tumBasvurulariGetir: function () {
+        return this.basvurular;
+    },
+
+    basvuruAra: function (siraNo) {
+        return this.basvurular.find(b => b.sira_no == siraNo);
+    }
+};

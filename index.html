@@ -261,6 +261,21 @@
                 </div>
             </div>
 
+            <!-- Başvuru Belgeleri Penceresi (TF0106) -->
+            <div id="pencere-basvuru-belgeleri" class="pencere hidden">
+                <div class="pencere-baslik">
+                    <span class="baslik-metni">TF0106 - Başvuru Belgeleri</span>
+                    <div class="pencere-kontrolleri">
+                        <i class="fa-regular fa-window-minimize"></i>
+                        <i class="fa-regular fa-window-maximize"></i>
+                        <i class="fa-solid fa-xmark pencere-kapat-btn"></i>
+                    </div>
+                </div>
+                <div class="pencere-icerik">
+                    <!-- İçerik asenkron yüklenecek -->
+                </div>
+            </div>
+
             <!-- Ana Portal Penceresi (Alt tarafta afişli menü) -->
             <div class="ana-menu-penceresi">
                 <div class="pencere-baslik">
@@ -315,7 +330,8 @@
                         <i class="fa-solid fa-circle-plus" style="color: #3498db;"></i>
                         <span>Başvuru</span>
                         <div class="menu-popup">
-                            <div class="menu-popup-item">2.1. Başvuru Belgeleri</div>
+                            <div class="menu-popup-item" data-open-window="pencere-basvuru-belgeleri"
+                                data-module-url="modules/basvuru/basvuru-belgeleri.html">2.1. Başvuru Belgeleri</div>
                             <div class="menu-popup-item">2.2. İş Yükü Monitörü</div>
                             <div class="menu-popup-item" data-open-window="pencere-puantaj">2.3. Personel Puantaj
                                 Listesi</div>
@@ -653,6 +669,7 @@
     <script src="database/tuzelkisi.js"></script>
     <script src="database/ulke.js"></script>
     <script src="database/mahalle.js"></script>
+    <script src="database/basvurubelgeleri.js"></script>
     <script src="app.js"></script>
 </body>
 
