@@ -196,6 +196,102 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+
+        // 6. Başvuru Belgeleri Mantığı (TF0106)
+        const basvuruTableBody = container.querySelector('#basvuru-tbody');
+        if (basvuruTableBody && typeof basvuruVeritabani !== 'undefined') {
+
+            // Helper: Form Doldurma
+            const fillBasvuruForm = (kayit) => {
+                const setVal = (id, val) => {
+                    const el = container.querySelector('#' + id);
+                    if (el) el.value = val !== undefined ? val : '';
+                };
+
+                setVal('inp-yil', kayit.yil);
+                setVal('inp-sira-no', kayit.sira_no);
+                setVal('inp-islem-tanimi', kayit.islem_tanimi);
+                setVal('inp-tarih', kayit.basvuru_tarihi);
+                setVal('inp-telefon', kayit.basvuran_telefon);
+                setVal('inp-tc', kayit.tc_kimlik);
+                setVal('inp-ad-soyad', kayit.basvuran_adi);
+                setVal('inp-adres', kayit.basvuran_adres);
+                setVal('inp-hazirlayan', kayit.hazirlayan);
+                setVal('inp-ulke-kod', kayit.ulke_tel_kod);
+                setVal('inp-siramatik', '');
+                setVal('inp-on-inceleme', kayit.on_inceleme);
+                setVal('inp-kontrol', kayit.kontrol_eden);
+                setVal('inp-onaylayan', kayit.onaylayan);
+
+                const aciklamaEl = container.querySelector('#inp-aciklama');
+                if (aciklamaEl) aciklamaEl.value = kayit.aciklama || '';
+
+                if (kayit.checklist) {
+                    const check = (id, state) => {
+                        const el = container.querySelector('#' + id);
+                        if (el && state !== undefined) el.checked = state;
+                    };
+                    check('chk-yetki', kayit.checklist.yetki_talebi);
+                    check('chk-farkli', kayit.checklist.farkli_mudurluk);
+                    check('chk-emlakci', kayit.checklist.emlakci);
+                    check('chk-eksik', kayit.checklist.eksik_bilgi);
+                    check('chk-yazisma', kayit.checklist.resmi_yazisma);
+                }
+
+                const zeminArea = container.querySelector('#zemin-tanim-content');
+                if (zeminArea) {
+                    if (kayit.zemin_tanim && kayit.zemin_tanim.length > 0) {
+                        zeminArea.innerHTML = `<i class="fa-solid fa-square-plus" style="color:blue; margin-right:5px;"></i>` + kayit.zemin_tanim[0] +
+                            `<button style="float:right; border:1px solid #999;" class="tf-btn"><i class="fa-solid fa-bolt icon-lightning"></i></button>`;
+                    } else {
+                        zeminArea.innerHTML = `<button style="float:right; border:1px solid #999;" class="tf-btn"><i class="fa-solid fa-bolt icon-lightning"></i></button>`;
+                    }
+                }
+            };
+
+            // Tabloyu Doldur (DataGrid)
+            const veriler = basvuruVeritabani.tumBasvurulariGetir();
+            const statusCount = container.querySelector('#status-count');
+            if (statusCount) statusCount.innerText = 'Kayıt : ' + veriler.length;
+
+            let html = '';
+            veriler.forEach(b => {
+                let rowClass = '';
+                if (b.durum === 'orange') rowClass = 'row-orange';
+                if (b.durum === 'dark-blue') rowClass = 'row-dark-blue';
+                const kisaIslem = b.islem_tanimi.length > 25 ? b.islem_tanimi.substring(0, 25) + '...' : b.islem_tanimi;
+
+                html += `<tr class="${rowClass}" data-sira-no="${b.sira_no}" style="cursor:pointer;">
+                    <td class="row-indicator"></td>
+                    <td>${b.yil}</td>
+                    <td>${b.sira_no}</td>
+                    <td>${b.basvuru_tarihi.substring(0, 16)}</td>
+                    <td>${b.basvuran_adi}</td>
+                    <td>${b.basvuran_telefon}</td>
+                    <td>${b.basvuran_adres}</td>
+                    <td>${b.tasinmaz}</td>
+                    <td>${kisaIslem}</td>
+                    <td>${b.hazirlayan}</td>
+                </tr>`;
+            });
+            basvuruTableBody.innerHTML = html;
+
+            basvuruTableBody.addEventListener('click', (e) => {
+                const tr = e.target.closest('tr');
+                if (!tr) return;
+                basvuruTableBody.querySelectorAll('tr').forEach(r => r.classList.remove('row-dark-blue'));
+                tr.classList.add('row-dark-blue');
+
+                const siraNo = tr.getAttribute('data-sira-no');
+                const kayit = basvuruVeritabani.basvuruAra(siraNo);
+                if (kayit) fillBasvuruForm(kayit);
+            });
+
+            setTimeout(() => {
+                const defaultRow = basvuruTableBody.querySelector('tr[data-sira-no="191189"]');
+                if (defaultRow) defaultRow.click();
+            }, 200);
+        }
     }
 
     // === ANA MENÜ POPUP YÖNETİMİ ===
