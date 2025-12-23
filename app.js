@@ -123,19 +123,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     });
 
-    // === ÇIKIŞ YAP ===
+    // === TÜM SİSTEMDEN ÇIKIŞ (MASAÜSTÜNE DÖNÜŞ) ===
     document.querySelectorAll('.btn-logout-app').forEach(btn => {
         btn.addEventListener('click', () => {
-            anaMasaustu.classList.remove('aktif');
-            anaMasaustu.classList.add('hidden');
-            setTimeout(() => {
-                anaMasaustu.style.display = 'none';
-                loginView.style.display = 'block';
-                loginView.classList.remove('hidden');
-                loginView.classList.add('active');
-            }, 300);
+            console.log("Sistemden çıkılıyor, masaüstüne dönülüyor...");
+            if (anaMasaustu) anaMasaustu.classList.add('hidden');
+            if (loginView) loginView.classList.add('hidden');
+            if (windowsDesktop) {
+                windowsDesktop.classList.remove('hidden');
+                windowsDesktop.style.display = 'flex';
+            }
         });
     });
+
+    // === LOGIN EKRANINDAN MASAÜSTÜNE DÖNÜŞ ===
+    const loginCloseX = document.querySelector('.login-close-x');
+    if (loginCloseX) {
+        loginCloseX.addEventListener('click', () => {
+            console.log("Masaüstüne dönülüyor...");
+            if (loginView) loginView.classList.add('hidden');
+            if (windowsDesktop) windowsDesktop.classList.remove('hidden');
+        });
+    }
 
     // === KİŞİ SORGULAMA LOGIC (Basitleştirilmiş) ===
     const btnYurut = document.querySelector('.btn-yurut');
@@ -178,4 +187,85 @@ document.addEventListener('DOMContentLoaded', () => {
             parent.querySelector('#tab-' + target).classList.remove('hidden');
         });
     });
+
+    // === TF0124 KİŞİ SORGULAMA ÖZEL MANTIK (ACCORDION & TABS) ===
+
+    // Accordion Başlık Tıklamaları
+    document.querySelectorAll('.tf-acc-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const section = header.parentElement;
+            const body = section.querySelector('.tf-acc-body');
+            const isActive = !body.classList.contains('hidden');
+
+            // Tüm bölümleri gizle (isteğe bağlı, paylaşılan Resim 15'te bazıları kapalı bazıları açık görünüyor)
+            // Eğer Resim 15'teki gibi 'tek bir başlık açık olsun' isterseniz aşağıdaki forEach'i kullanın:
+            document.querySelectorAll('.tf-acc-body').forEach(b => b.classList.add('hidden'));
+
+            if (isActive) {
+                body.classList.add('hidden');
+            } else {
+                body.classList.remove('hidden');
+            }
+        });
+    });
+
+    // Klasik Sekme Geçişleri (Kişi Arama Kriterleri / Kişi Listesi)
+    document.querySelectorAll('.panel-tabs-classic .tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const container = tab.closest('.pencere-icerik');
+            const target = tab.getAttribute('data-tab');
+
+            // Sekmeleri güncelle
+            container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // İçeriği güncelle (Kişi Listesi'ni göstermek için listeyi aktif et)
+            // Not: TF0124'te tüm form tek bir panel-content içinde görünüyor,
+            // Liste tıklandığında formu gizleyip tabloyu göstermeliyiz.
+            const content = container.querySelector('.panel-content-classic');
+            if (target === 'kisi-listesi') {
+                content.querySelector('.tf-accordion').classList.add('hidden');
+                // Eğer daha önce tablo yoksa oluştur veya göster
+                let listTable = content.querySelector('.complex-table');
+                if (!listTable) {
+                    listTable = document.createElement('table');
+                    listTable.className = 'complex-table';
+                    listTable.innerHTML = '<thead><tr><th>Sistem No</th><th>Adı</th><th>Soyadı</th></tr></thead><tbody><tr><td colspan="3" style="text-align:center;">Sorgulama henüz yapılmadı.</td></tr></tbody>';
+                    content.appendChild(listTable);
+                } else {
+                    listTable.classList.remove('hidden');
+                }
+            } else {
+                content.querySelector('.tf-accordion').classList.remove('hidden');
+                if (content.querySelector('.complex-table')) {
+                    content.querySelector('.complex-table').classList.add('hidden');
+                }
+            }
+        });
+    });
+
+    // === WINDOWS MASAÜSTÜ GEÇİŞİ ===
+    const startTakbisBtn = document.getElementById('start-takbis-btn');
+    const windowsDesktop = document.getElementById('windows-desktop-view');
+
+    if (startTakbisBtn) {
+        const gecisYap = () => {
+            console.log("TAKBİS Başlatılıyor...");
+            if (windowsDesktop) windowsDesktop.classList.add('hidden');
+            if (loginView) {
+                loginView.classList.remove('hidden');
+                loginView.style.display = 'block';
+            }
+        };
+
+        startTakbisBtn.addEventListener('dblclick', (e) => {
+            gecisYap();
+            e.stopPropagation();
+        });
+
+        startTakbisBtn.addEventListener('click', (e) => {
+            gecisYap();
+            e.stopPropagation();
+        });
+    }
 });

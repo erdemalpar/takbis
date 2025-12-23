@@ -22,93 +22,75 @@ html {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    /* Sağ tarafa yasla */
-    position: relative;
-    z-index: 100;
-    overflow: hidden;
-}
-
-#login-view::before {
-    content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(80, 0, 120, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
-    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background: #111 url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    z-index: 10000;
+    color: #fff;
 }
 
 .login-overlay-full {
-    position: relative;
     width: 100%;
     height: 100%;
-    z-index: 5;
+    background: rgba(40, 2, 60, 0.4);
+    /* Morumsu overlay */
+    position: relative;
+    padding: 60px;
     display: flex;
-    align-items: center;
     justify-content: flex-end;
-    padding-right: 80px;
+    /* Sağ panel için */
+    align-items: center;
 }
 
-.login-close-x {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* Sol Üst Logo */
+/* Sol Üst TK Logo */
 .login-tk-side-logo {
     position: absolute;
-    top: 40px;
+    top: 50px;
     left: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #fff;
+    text-align: center;
 }
 
 .tk-logo-img-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid #005a9e;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .tk-circle-inner {
-    display: flex;
-    align-items: baseline;
-    font-family: serif;
-    font-weight: bold;
+    border: 2px solid #005a9e;
+    border-radius: 50%;
+    padding: 10px;
 }
 
 .tk-letter {
-    color: #f39c12;
-    font-size: 45px;
+    font-size: 38px;
+    color: #003366;
+    font-weight: bold;
 }
 
 .tk-letter-alt {
-    color: #2980b9;
-    font-size: 45px;
+    font-size: 38px;
+    color: #f39c12;
+    font-weight: bold;
     margin-left: -5px;
 }
 
-.tk-logo-text-vertical {
-    text-align: center;
-}
-
 .tk-logo-text-vertical strong {
-    display: block;
     font-size: 22px;
-    letter-spacing: 1px;
+    display: block;
 }
 
 .tk-logo-text-vertical span {
@@ -116,36 +98,32 @@ html {
     opacity: 0.9;
 }
 
-/* Sağ Form Paneli */
+/* Sağ Panel */
 .login-right-panel {
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(10px);
-    width: 480px;
-    padding: 60px 40px;
+    width: 550px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    padding: 40px;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
-    height: auto;
-    position: relative;
 }
 
 .login-main-title {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 32px;
     margin-bottom: 40px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: right;
+    letter-spacing: 2px;
 }
 
 .login-form-row {
-    margin-bottom: 12px;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .login-form-row label {
     width: 140px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .login-input-box {
@@ -156,10 +134,11 @@ html {
 .login-input-box select {
     width: 100%;
     padding: 6px 10px;
-    border: 1px solid #fff;
+    font-size: 16px;
+    border: 1px solid #ccc;
     background: #fff;
-    font-size: 14px;
-    color: #333;
+    color: #000080;
+    font-weight: bold;
 }
 
 .login-action-area {
@@ -170,17 +149,16 @@ html {
 }
 
 .btn-win-classic {
-    padding: 4px 35px;
-    background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
-    border: 1px solid #777;
-    color: #333;
-    font-size: 14px;
+    padding: 8px 35px;
+    background: #f0f0f0;
+    border: 1px solid #707070;
+    color: #000;
     cursor: pointer;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
 }
 
 .btn-win-classic:hover {
-    background: #f0f0f0;
+    background: #e5e5e5;
 }
 
 .login-link-group {
@@ -191,14 +169,10 @@ html {
 }
 
 .login-link-group a {
-    color: #00ffff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.login-link-group a:hover {
+    color: #00f2ff;
+    /* Turkuaz Neon Linkler */
     text-decoration: underline;
+    font-size: 15px;
 }
 
 /* Sağ Alt BT Logo */
@@ -207,40 +181,45 @@ html {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 12px;
+    gap: 15px;
 }
 
 .bt-icon-new {
-    background: #2980b9;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
+    width: 60px;
+    height: 45px;
+    background: #3498db;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
     font-weight: bold;
-    font-size: 20px;
-}
-
-.bt-icon-new .t-char {
-    color: #f39c12;
 }
 
 .bt-text-new {
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.1;
+    text-align: left;
 }
 
 .bt-text-new strong {
+    font-size: 20px;
     display: block;
-    font-size: 18px;
 }
 
 .login-bottom-copyright {
     position: absolute;
-    bottom: 15px;
+    bottom: 30px;
     width: 100%;
     text-align: center;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 11px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.login-close-x {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 /* === MASAÜSTÜ ORTAMI (EXE GÖRÜNÜMÜ) === */
@@ -257,6 +236,100 @@ html {
     display: block;
 }
 
+/* === WINDOWS MASAÜSTÜ (GİRİŞ ÖNCESİ) === */
+#windows-desktop-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0078d7 url('https://images.unsplash.com/photo-1510519133417-c81409b13f5d?q=80&w=2000&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+.desktop-icon {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 5px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.desktop-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.desktop-icon i {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.desktop-icon span {
+    color: #fff;
+    font-size: 11px;
+    text-align: center;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* TM FONKSİYON ÖZEL İKON (RESİM 13) */
+.icon-tm-fonksiyon {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    background: #000080;
+    /* Lacivert arka plan */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    margin-bottom: 8px;
+}
+
+.icon-tm-fonksiyon i.fa-handshake {
+    color: #ffd700;
+    /* Altın/Sarı el sıkışma */
+    font-size: 24px;
+}
+
+.icon-tm-fonksiyon .shortcut-arrow {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+.icon-tm-fonksiyon .shortcut-arrow i {
+    font-size: 10px;
+    color: #000080;
+    margin-bottom: 0;
+    text-shadow: none;
+}
+
+.tm-text {
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+/* === GENEL GİZLEME VE GÖRÜNÜRLÜK === */
 .hidden {
     display: none !important;
 }
@@ -691,4 +764,219 @@ html {
 
 .complex-table tr:hover td {
     background: #fffbd6;
+}
+
+/* === TF0124 - KİŞİ SORGULAMA VE KLASİK PENCERE SİSTEMİ (RESİM 15) === */
+
+/* Klasik Toolbar */
+.panel-toolbar-classic {
+    background: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 3px 6px;
+    gap: 10px;
+}
+
+.t-group {
+    display: flex;
+    gap: 4px;
+}
+
+.t-sep {
+    width: 2px;
+    height: 18px;
+    background: #ccc;
+    margin: 0 4px;
+}
+
+.t-icon-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t-icon-btn:hover {
+    background: #e0e0e0;
+    border: 1px solid #777;
+}
+
+.t-icon-btn i {
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+/* Klasik Sekmeler */
+.panel-tabs-classic {
+    display: flex;
+    background: #f0f0f0;
+    padding: 2px 10px 0;
+    border-bottom: 1px solid #005a9e;
+}
+
+.panel-tabs-classic .tab {
+    padding: 4px 15px;
+    cursor: pointer;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background: #e1e1e1;
+    color: #000080;
+    margin-right: 2px;
+    border-radius: 4px 4px 0 0;
+}
+
+.panel-tabs-classic .tab.active {
+    background: #fff;
+    border: 1px solid #005a9e;
+    border-bottom: 2px solid #fff;
+    margin-bottom: -1px;
+    font-weight: bold;
+}
+
+/* İçerik Alanı */
+.panel-content-classic {
+    flex: 1;
+    background: #fff;
+    overflow-y: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Accordion Yapısı */
+.tf-accordion {
+    display: flex;
+    flex-direction: column;
+}
+
+.tf-acc-header {
+    background: #fff;
+    color: #000080;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.tf-acc-header:hover {
+    background: #f5f5f5;
+}
+
+.tf-acc-body {
+    padding: 10px;
+    background: #f0f8ff;
+    /* Çok açık mavi arka plan */
+}
+
+/* Form Yerleşimi */
+.tf-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.tf-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tf-form-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tf-form-row.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.tf-form-row label {
+    font-size: 11px;
+    color: #000080;
+    white-space: nowrap;
+}
+
+/* Input ve İkonlar */
+.tf-input {
+    width: 100%;
+    padding: 2px 5px;
+    border: 1px solid #005a9e;
+    font-size: 12px;
+    color: #000;
+}
+
+.input-with-icon {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.tf-help-icon {
+    font-size: 18px;
+    color: #fbc02d;
+    /* Sarı Soru İşareti */
+    margin-left: 5px;
+    cursor: help;
+}
+
+.tf-select-icon {
+    font-size: 14px;
+    color: #1565c0;
+    /* Mavi İkon */
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.tf-input-range {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.tf-input-group-inline {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+/* Alt Bilgi */
+.tf-panel-status {
+    height: 22px;
+    background: #f0f0f0;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 11px;
+    gap: 10px;
+}
+
+.tf-status-item {
+    color: #333;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Gizleme */
+.hidden {
+    display: none !important;
 }
