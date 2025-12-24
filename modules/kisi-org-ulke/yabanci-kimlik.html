@@ -350,32 +350,7 @@
         <div class="tf-status-item" style="padding-right: 20px;">Kayıt : 1</div>
     </div>
 
-    <script>
-        // Sekme Değiştirme ve Görünüm Kontrolü
-        document.querySelectorAll('.tab').forEach(t => {
-            t.addEventListener('click', () => {
-                const target = t.getAttribute('data-tab');
-                document.querySelectorAll('.tab').forEach(item => item.classList.remove('active'));
-                t.classList.add('active');
 
-                const toolbar = document.getElementById('main-toolbar');
-                const divKriterler = document.getElementById('div-kriterler');
-                const divSonuclar = document.getElementById('div-sonuclar');
-
-                if (target === 'arama-kriterleri') {
-                    divKriterler.classList.remove('hidden');
-                    divSonuclar.classList.add('hidden');
-                    divSonuclar.style.display = 'none';
-                    toolbar.className = 'panel-toolbar-classic toolbar-kriter';
-                } else {
-                    divKriterler.classList.add('hidden');
-                    divSonuclar.classList.remove('hidden');
-                    divSonuclar.style.display = 'flex';
-                    toolbar.className = 'panel-toolbar-classic toolbar-sonuc';
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

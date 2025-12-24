@@ -566,7 +566,7 @@ html {
     max-height: none;
 }
 
-.menu-ikonu-buton.aktif .menu-popup {
+.menu-ikonu-buton.aktif>.menu-popup {
     display: flex;
 }
 
@@ -649,7 +649,6 @@ html {
     /* font-awesome window-restore icon */
 }
 
-.menu-popup-item:hover>.submenu,
 .menu-popup-item.submenu-open>.submenu {
     display: flex !important;
     z-index: 1000;

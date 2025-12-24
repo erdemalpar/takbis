@@ -197,6 +197,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // 5.1 Yabancı Kimlik Sorgu Sekme Mantığı (TF0881)
+        const yabanciTabs = container.querySelectorAll('.tab[data-tab="arama-kriterleri"], .tab[data-tab="arama-sonuc"]');
+        if (yabanciTabs.length > 0) {
+            yabanciTabs.forEach(t => {
+                t.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Genel tab mantığıyla çakışmasın
+                    const target = t.getAttribute('data-tab');
+
+                    // Aktif sekme stilini güncelle
+                    yabanciTabs.forEach(item => item.classList.remove('active'));
+                    t.classList.add('active');
+
+                    // İçerik ve Toolbar kontrolü
+                    const toolbar = container.querySelector('#main-toolbar');
+                    const divKriterler = container.querySelector('#div-kriterler');
+                    const divSonuclar = container.querySelector('#div-sonuclar');
+
+                    if (divKriterler && divSonuclar) {
+                        if (target === 'arama-kriterleri') {
+                            divKriterler.classList.remove('hidden');
+                            divSonuclar.classList.add('hidden');
+                            divSonuclar.style.display = 'none';
+                            if (toolbar) toolbar.className = 'panel-toolbar-classic toolbar-kriter';
+                        } else {
+                            divKriterler.classList.add('hidden');
+                            divSonuclar.classList.remove('hidden');
+                            divSonuclar.style.display = 'flex';
+                            if (toolbar) toolbar.className = 'panel-toolbar-classic toolbar-sonuc';
+                        }
+                    }
+                });
+            });
+        }
+
         // 6. Başvuru Belgeleri Mantığı (TF0106)
         const basvuruTableBody = container.querySelector('#basvuru-tbody');
         if (basvuruTableBody && typeof basvuruVeritabani !== 'undefined') {
